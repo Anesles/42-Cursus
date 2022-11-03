@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:23:08 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/02 18:16:53 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:27:30 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char *f;
-	
+	unsigned char	*f;
+
 	f = s;
-	while(n--)
+	while (n--)
 		*f++ = c;
-	return s;
+	return (s);
 }
