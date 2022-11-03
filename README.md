@@ -1,3 +1,3 @@
 # 42-Cursus
 
-ALl the code developed at 42 Cursus
+All the code developed at 42 Cursus
