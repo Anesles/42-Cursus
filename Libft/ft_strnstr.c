@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:30:19 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/03 22:07:10 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:00:38 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	t_big = (char *)big;
 	t_little = (char *)little;
-	while (*t_big != '\0')
+	while (*t_big != '\0' && len-- > 0)
 	{
 		if (*t_big == *t_little)
 		{

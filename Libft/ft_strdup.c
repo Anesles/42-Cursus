@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 22:35:04 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/03 22:39:19 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/04 13:50:08 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *s)
 	char	*ret;
 
 	length = ft_strlen(s);
-	ret = malloc(length * sizeof(char));
+	ret = malloc((length + 1) * sizeof(char));
 	while (length >= 0)
 	{
 		ret[length] = s[length];

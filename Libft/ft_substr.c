@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:16:37 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 17:01:52 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/04 13:35:03 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/04 15:33:42 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char	*substr;
 
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	if ((dest - src) < (long int)n)
-	{
-		i = n - 1;
-		while (i > n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i--;
-		}
-	}
-	else
-	{
-		while (i < n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
-	}
-	return (dest);
+	substr = malloc((len + 1) * sizeof(char));
+	if (!substr)
+		return (NULL);
+	
+	ft_strlcpy(substr, &s[start], len + 1);
+	return(substr);
 }
