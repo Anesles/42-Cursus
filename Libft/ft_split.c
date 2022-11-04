@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:03:05 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 19:16:14 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:07:14 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,78 @@ static char	**ft_alloc_array(char const *s, char c)
 		i++;
 	while (s[i])
 	{
-		if (s[i] == c && s[i - 1] != c && s[i + 1] != c)
+		if ((s[i] == c && s[i - 1] != c) || (s[i] != c && s[i + 1] == 0))
 			count++;
 		i++;
 	}
-	printf("%d\n", count);
 	array = (char **)malloc(sizeof(s) * (count + 1));
 	if (!array)
 		return (NULL);
 	return (array);
 }
 
+static char	*ft_split_range(int start, int finish, char const *s)
+{
+	int		length;
+	int		i;
+	char	*str;
+
+	i = 0;
+	length = finish - start;
+	str = (char *)malloc(length + 1 * sizeof(*s));
+	while (start < finish)
+		str[i++] = s[start++];
+	str[i] = 0;
+	return (str);
+}
+
+static char	**ft_split_string(char **array, char const *s, char c)
+{
+	int		i;
+	int		j;
+	int		start;
+
+	i = 0;
+	j = 0;
+	while (s[i] == c)
+		i++;
+	start = i;
+	while (s[i])
+	{
+		if ((s[i] == c && s[i - 1] != c) || (s[i] != c && s[i + 1] == 0))
+		{
+			if (s[i + 1] == 0)
+				array[j++] = ft_split_range(start, i + 1, s);
+			else
+				array[j++] = ft_split_range(start, i, s);
+			while (s[i] == c)
+				i++;
+			start = i;
+		}
+		i++;
+	}
+	array[j] = 0;
+	return (array);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	char	*str;
 	char	**array;
 
 	array = ft_alloc_array(s, c);
-	
-	return (NULL);
+	array = ft_split_string(array, s, c);
+	return (array);
 }
 
 int	main(void)
 {
-	ft_split("Eu só sei que nada sei", ' ');
+	char	**array;
+
+	array = ft_split("Eu so sei que nada sei", ' ');
+	int	i = 0;
+	while (i < 7)
+	{
+		printf("%d String: %s\n", i,  array[i]);
+		i++;
+	}
 }
