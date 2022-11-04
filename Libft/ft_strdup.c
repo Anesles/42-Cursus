@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 22:35:04 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 13:50:08 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:27:04 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strdup(const char *s)
 	while (length >= 0)
 	{
 		ret[length] = s[length];
-		length--; 
+		length--;
 	}
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:07:27 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 17:56:23 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/04 18:02:40 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (finish > start && ft_char_in_set(s1[finish - 1], set))
 		finish--;
 	str = (char *)malloc((finish - start + 1) * sizeof(*s1));
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (start < finish)
 		str[i++] = s1[start++];
