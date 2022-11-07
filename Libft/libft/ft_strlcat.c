@@ -6,29 +6,28 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:42:02 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/03 12:34:55 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/07 23:40:06 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <bsd/string.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	index;
-	unsigned int	len_dest;
-	unsigned int	index_dest;
+	size_t	length;
+	size_t	index;
 
-	len_dest = ft_strlen(dst);
-	if (len_dest > size)
-		return (ft_strlen(src) + size);
+	if (size == 0 || size <= ft_strlen(dst))
+		return (size + ft_strlen(src));
+	length = ft_strlen(dst);
 	index = 0;
-	index_dest = len_dest;
-	while (src[index] && index_dest < size - 1)
+	while (src[index] && length + 1 < size)
 	{
-		dst[index_dest] = src[index];
-		index_dest++;
+		dst[length] = src[index];
+		length++;
 		index++;
 	}
-	dst[index_dest] = 0;
-	return (ft_strlen(dst) + ft_strlen(&src[index]));
+	dst[length] = 0;
+	return (length + ft_strlen(&src[index]));
 }
