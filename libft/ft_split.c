@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:03:05 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/07 15:06:24 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:39:38 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,4 @@ char	**ft_split(char const *s, char c)
 	array = ft_alloc_array(s, c);
 	array = ft_split_string(array, s, c);
 	return (array);
-}
-
-int	main(void)
-{
-	char	**array;
-	int		i;
-
-	array = ft_split("Eu so sei que nada sei", ' ');
-	i = 0;
-	while (i < 7)
-	{
-		printf("%d String: %s\n", i,  array[i]);
-		i++;
-	}
 }
