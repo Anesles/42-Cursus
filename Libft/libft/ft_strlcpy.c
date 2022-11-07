@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:05:55 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 15:25:47 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/07 16:43:34 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	unsigned int	i;
-	unsigned int	count;
 	size_t			len_src;
 
 	len_src = ft_strlen(src);
-	count = 0;
 	i = 0;
 	if (size != 0)
 	{
@@ -27,7 +25,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		{
 			dst[i] = src[i];
 			i++;
-			count++;
 		}
 		dst[i] = '\0';
 	}

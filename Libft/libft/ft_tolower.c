@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 13:04:50 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/03 13:07:16 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/07 17:36:34 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_tolower(int c)
 {
-	if (!ft_isalpha(c) || (c >= 'a' && c >= 'z'))
+	if (!(c >= 'A' && c <= 'Z'))
 		return (c);
-	return (c - 32);
+	else
+		return (c + 32);
 }

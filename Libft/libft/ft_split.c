@@ -6,13 +6,13 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:03:05 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/07 15:39:38 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:14:55 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_alloc_array(char const *s, char c)
+static char	**ft_alloc_array(char const *s, char c, int length)
 {
 	int		i;
 	int		count;
@@ -21,14 +21,14 @@ static char	**ft_alloc_array(char const *s, char c)
 	i = 0;
 	count = 0;
 	while (s[i] == c)
-		i++;
-	while (s[i])
+		i++;	
+	while (i < length)
 	{
-		if ((s[i] == c && s[i - 1] != c) || (s[i] != c && s[i + 1] == 0))
+		if ((s[i] == c && s[i - 1] != c))
 			count++;
 		i++;
 	}
-	array = (char **)malloc(sizeof(s) * (count + 1));
+	array = (char **)malloc(sizeof(s) * (count + 2));
 	if (!array)
 		return (NULL);
 	return (array);
@@ -49,7 +49,7 @@ static char	*ft_split_range(int start, int finish, char const *s)
 	return (str);
 }
 
-static char	**ft_split_string(char **array, char const *s, char c)
+static char	**ft_split_string(char **array, char const *s, char c, int length)
 {
 	int		i;
 	int		j;
@@ -60,7 +60,7 @@ static char	**ft_split_string(char **array, char const *s, char c)
 	while (s[i] == c)
 		i++;
 	start = i;
-	while (s[i])
+	while (i < length)
 	{
 		if ((s[i] == c && s[i - 1] != c) || (s[i] != c && s[i + 1] == 0))
 		{
@@ -81,8 +81,10 @@ static char	**ft_split_string(char **array, char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
+	int		length;
 
-	array = ft_alloc_array(s, c);
-	array = ft_split_string(array, s, c);
+	length = ft_strlen(s);
+	array = ft_alloc_array(s, c, length);
+	array = ft_split_string(array, s, c, length);
 	return (array);
 }
