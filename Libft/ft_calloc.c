@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:16:37 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 17:01:52 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/03 22:27:42 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/04 18:51:42 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	i;
+	void	*array;
 
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	if ((dest - src) < (long int)n)
-	{
-		i = n - 1;
-		while (i > n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i--;
-		}
-	}
-	else
-	{
-		while (i < n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
-	}
-	return (dest);
+	array = (void *) malloc(nmemb * size);
+	if (!array)
+		return (NULL);
+	ft_bzero(array, size);
+	return (array);
 }

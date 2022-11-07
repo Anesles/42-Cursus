@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:16:37 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 17:01:52 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/03 22:35:04 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/04 18:27:04 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strdup(const char *s)
 {
-	size_t	i;
+	int		length;
+	char	*ret;
 
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	if ((dest - src) < (long int)n)
+	length = ft_strlen(s);
+	ret = malloc((length + 1) * sizeof(char));
+	while (length >= 0)
 	{
-		i = n - 1;
-		while (i > n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i--;
-		}
+		ret[length] = s[length];
+		length--;
 	}
-	else
-	{
-		while (i < n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
-	}
-	return (dest);
+	return (ret);
 }

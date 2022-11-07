@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 10:16:37 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 17:01:52 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/03 22:12:20 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/04 18:27:11 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	size_t	i;
+	char	*str;
+	int		count_minus;
+	int		n;
 
-	if (!dest && !src)
-		return (0);
-	i = 0;
-	if ((dest - src) < (long int)n)
+	str = (char *)nptr;
+	count_minus = 0;
+	n = 0;
+	while (*str == ' ')
+		str++;
+	while (*str == '+' || *str == '-')
 	{
-		i = n - 1;
-		while (i > n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i--;
-		}
+		if (*str == '-')
+			count_minus++;
+		str++;
 	}
-	else
+	while (*str >= 48 && *str <= 57)
 	{
-		while (i < n)
-		{
-			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-			i++;
-		}
+		n = n * 10 + (*str - 48);
+		str++;
 	}
-	return (dest);
+	if (count_minus % 2 != 0)
+		n *= -1;
+	return (n);
 }
