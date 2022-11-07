@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:03:05 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/04 20:30:26 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:06:24 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,7 @@ static char	**ft_alloc_array(char const *s, char c)
 		return (NULL);
 	return (array);
 }
-/*
-static void	ft_free_array(char **array)
-{
-	int	i;
 
-	i = 0;
-	while (array[i++])
-		free(array[i]);
-	free(array);
-}
-*/
 static char	*ft_split_range(int start, int finish, char const *s)
 {
 	int		length;
@@ -94,7 +84,6 @@ char	**ft_split(char const *s, char c)
 
 	array = ft_alloc_array(s, c);
 	array = ft_split_string(array, s, c);
-	//ft_free_array(array);
 	return (array);
 }
 
