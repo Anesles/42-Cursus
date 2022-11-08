@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:03:05 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/08 00:30:30 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:58:21 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ char	**ft_split(char const *s, char c)
 	return (array);
 }
 
-/*
 int main(void)
 {
 	int	i;
@@ -113,4 +112,3 @@ int main(void)
 		i++;
 	}
 }
-*/
