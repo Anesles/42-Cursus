@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:03:05 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/08 16:09:47 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/08 19:06:11 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,11 @@ char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	int		length;
+	int		i;
 
 	if (!s)
 		return (NULL);
+	i = 0;
 	length = ft_strlen(s);
 	array = ft_alloc_array(s, c, length);
 	array = ft_split_string(array, s, c, length);
@@ -99,8 +101,9 @@ int	main()
 {
 	char	**array;
 	size_t 	size;
-
-	array = ft_split("      split       this for   me  !  ", ' ');
+	char *s = "      split       this for   me  !  ";
+	
+	array = ft_split(s, ' ');
 	size = 0;
 	while (size < 6)
 	{
