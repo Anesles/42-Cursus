@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:56:20 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/08 15:21:02 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/08 15:31:17 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	i;
 	size_t	length;
 
+	if (!s)
+		return (NULL);
 	length = ft_strlen(s);
-	ret = (char *)malloc(length * sizeof(*s));
+	ret = (char *)malloc((length + 1) * sizeof(*s));
 	if (!ret)
 		return(NULL);
 	length = ft_strlen(s);
@@ -29,5 +31,6 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		ret[i] = f(i, s[i]);
 		i++;
 	}
+	ret[i] = 0;
 	return (ret);
 }

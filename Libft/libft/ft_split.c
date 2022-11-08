@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:03:05 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/08 14:58:21 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:09:47 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ static char	**ft_alloc_array(char const *s, char c, int length)
 
 	i = 0;
 	count = 0;
-	while (s[i] == c || s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
+	while (s[i] == c)
 		i++;
 	while (i < (length + 1))
 	{
 		if ((s[i] == c && s[i - 1] != c))
 			count++;
-		else if (s[i] == 0 && (s[i - 1] != c || s[i - 1] == ' '
-				|| s[i - 1] == '\t' || s[i - 1] == '\n'))
+		else if (s[i] == 0)
 			count++;
 		i++;
 	}
@@ -47,12 +46,7 @@ static char	*ft_split_range(int start, int finish, char const *s)
 	length = finish - start;
 	str = (char *)malloc(length + 1 * sizeof(*s));
 	while (start < finish)
-	{
-		if (s[start] == ' ' || s[start] == '\t' || s[start] == '\n')
-			start++;
-		else
-			str[i++] = s[start++];
-	}
+		str[i++] = s[start++];
 	str[i] = 0;
 	return (str);
 }
@@ -65,7 +59,7 @@ static char	**ft_split_string(char **array, char const *s, char c, int length)
 
 	i = 0;
 	j = 0;
-	while (s[i] == c || s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
+	while (s[i] == c)
 		i++;
 	start = i;
 	while (i < length)
@@ -91,6 +85,8 @@ char	**ft_split(char const *s, char c)
 	char	**array;
 	int		length;
 
+	if (!s)
+		return (NULL);
 	length = ft_strlen(s);
 	array = ft_alloc_array(s, c, length);
 	array = ft_split_string(array, s, c, length);
@@ -99,16 +95,16 @@ char	**ft_split(char const *s, char c)
 	return (array);
 }
 
-int main(void)
+int	main()
 {
-	int	i;
 	char	**array;
+	size_t 	size;
 
-	i = 0;
-	array = ft_split("split  ||this|for|me|||||!|", '|');
-	while (i < 7)
+	array = ft_split("      split       this for   me  !  ", ' ');
+	size = 0;
+	while (size < 6)
 	{
-		printf("Strind %d: %s\n", i, array[i]);
-		i++;
+		printf("String %zu: %s\n", size, array[size]);
+		size++;
 	}
 }
