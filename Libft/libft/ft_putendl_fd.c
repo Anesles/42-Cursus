@@ -6,13 +6,13 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:53:03 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/08 16:56:42 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:44:39 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
 	char	c;
 

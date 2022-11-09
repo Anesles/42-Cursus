@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:46:23 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/08 18:05:54 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/09 17:42:03 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*ft_alloc(int n, size_t size)
 	return (ret);
 }
 
-char *	ft_min(void)
+char	*ft_min(void)
 {
 	char	*str;
 
@@ -81,10 +81,7 @@ char	*ft_itoa(int n)
 	char	*ret;
 
 	if (n == -2147483648)
-	{
-		ret = ft_min();
-		return (ret);
-	}
+		return (ft_min());
 	size = 0;
 	neg = 0;
 	number = n;

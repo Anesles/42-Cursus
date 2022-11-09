@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brumarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 16:03:04 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/09 17:36:31 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/09 17:16:05 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/09 17:35:21 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	i;
+	t_list	*aux;
 
-	if (s)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		i = 0;
-		while (s[i])
-		{
-			f(i, &s[i]);
-			i++;
-		}
+		aux = lst->next;
+		f(lst->content);
+		lst = aux;
 	}
 }
