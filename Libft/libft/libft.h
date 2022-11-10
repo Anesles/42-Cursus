@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:15:28 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/09 17:40:23 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:08:14 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int			ft_atoi(const char *nptr);
 int			ft_lstsize(t_list *lst);
 
 char		*ft_strrchr(const char *s, int c);
+char		*ft_strchr(const char *s, int c);
+
 char		*ft_strnstr(const char *big, const char *little, size_t len);
 char		*ft_strdup(const char *s);
 char		*ft_strjoin(char const *s1, char const *s2);
