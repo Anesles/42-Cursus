@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 22:12:20 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/07 23:53:56 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:04:23 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	ft_atoi(const char *nptr)
 	int		n;
 
 	str = (char *)nptr;
-	count_minus = 0;
+	count_minus = 1;
 	n = 0;
 	while ((*str == ' ' || !ft_isprint(*str)) && *str != '\e')
 		str++;
-	while (*str == '+' || *str == '-')
+	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			count_minus++;
+			count_minus = -1;
 		str++;
 	}
 	while (*str >= 48 && *str <= 57)
@@ -34,7 +34,5 @@ int	ft_atoi(const char *nptr)
 		n = n * 10 + (*str - 48);
 		str++;
 	}
-	if (count_minus % 2 != 0)
-		n *= -1;
-	return (n);
+	return (n * count_minus);
 }

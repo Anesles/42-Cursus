@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:15:31 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/07 22:30:39 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:46:04 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*t;
+	size_t	i;
 
-	t = (char *)s;
-	while (n > 0)
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (i > n)
 	{
-		if (*t == c)
-			return (t);
-		t++;
-		n--;
+		if (*(unsigned char *)(s + i) == (unsigned char) c)
+			return ((void *)(s + i));
+		i++;
 	}
 	return (NULL);
 }

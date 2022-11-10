@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:03:05 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/09 17:47:51 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:09:07 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	**ft_alloc_array(char const *s, char c, int length)
 	count = 0;
 	while (s[i] == c)
 		i++;
-	while (i < (length + 1))
+	while (i <= length)
 	{
 		if ((s[i] == c && s[i - 1] != c))
 			count++;
@@ -32,11 +32,14 @@ static char	**ft_alloc_array(char const *s, char c, int length)
 	}
 	array = (char **)malloc(sizeof(s) * (count + 1));
 	if (!array)
+	{
+		free(array);
 		return (NULL);
+	}
 	return (array);
 }
 
-static char	*ft_split_range(int start, int finish, char const *s)
+static char	*ft_split_range(int start, int finish, char const *s, char **array)
 {
 	int		length;
 	int		i;
@@ -45,10 +48,25 @@ static char	*ft_split_range(int start, int finish, char const *s)
 	i = 0;
 	length = finish - start;
 	str = (char *)malloc(length + 1 * sizeof(*s));
+	if (!str)
+	{
+		free(array);
+		return (NULL);
+	}
 	while (start < finish)
 		str[i++] = s[start++];
 	str[i] = 0;
 	return (str);
+}
+
+void	ft_free(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		free(array[i++]);
+	free(array);
 }
 
 static char	**ft_split_string(char **array, char const *s, char c, int length)
@@ -67,9 +85,9 @@ static char	**ft_split_string(char **array, char const *s, char c, int length)
 		if ((s[i] == c && s[i - 1] != c) || (s[i] != c && s[i + 1] == 0))
 		{
 			if (s[i + 1] == 0 && s[i] != c)
-				array[j++] = ft_split_range(start, i + 1, s);
+				array[j++] = ft_split_range(start, i + 1, s, array);
 			else
-				array[j++] = ft_split_range(start, i, s);
+				array[j++] = ft_split_range(start, i, s, array);
 			while (s[i] == c)
 				i++;
 			start = i;
@@ -91,8 +109,10 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	length = ft_strlen(s);
 	array = ft_alloc_array(s, c, length);
+	if (!array)
+		return (NULL);
 	array = ft_split_string(array, s, c, length);
 	if (!array)
-		return (0);
+		return (NULL);
 	return (array);
 }

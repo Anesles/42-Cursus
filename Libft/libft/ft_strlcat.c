@@ -6,12 +6,11 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:42:02 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/07 23:40:06 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:39:00 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
