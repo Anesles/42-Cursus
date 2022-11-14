@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brumarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/14 18:17:37 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/14 21:56:33 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*expand_buf(char *buf, int fd)
 	if (!aux[0])
 	{
 		free(aux);
-		return (NULL);
+		return (buf);
 	}
 	if (!buf)
 		return (aux);
@@ -78,7 +78,7 @@ char	*new_line(char *buf, char *line)
 	new_buf = ft_substr(buf, index, new_len + 1);
 	if (!new_buf)
 		return (NULL);
-	free (buf);
+	free(buf);
 	return (new_buf);
 }
 
@@ -109,22 +109,25 @@ char	*get_next_line(int fd)
 	}
 	return (get_next_line(fd));
 }
-
-int	main()
+/*
+int	main(void)
 {
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
 	char	*line;	
 
 	fd = open("41_no_nl", O_RDWR);
 	i = 1;
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
 		printf("String %d: %s", i, line);
+		if ((int)ft_strchr(line, '\n') == -1)
+			printf("\n");
 		if (!line)
-			return 0;
+			return (0);
 		free(line);
 		i++;
 	}
 }
+*/
