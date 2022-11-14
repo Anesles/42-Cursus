@@ -6,7 +6,7 @@
 /*   By: brumarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/11 15:33:54 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/14 17:03:50 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,92 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-char	*get_next_line(int fd)
+char	*read_buffer(int fd)
 {
-	static char	*line;
-	
-	if (!line)
-		line =(char *) malloc(BUFFER_SIZE * sizeof(char));
-	read(fd, line, BUFFER_SIZE);
-	printf("%s\n", line);
+	char	*aux;
+	int		bytes;
+
+	aux = malloc(BUFFER_SIZE * sizeof(char));
+	if (!aux)
+		return (NULL);
+	bytes = read(fd, aux, BUFFER_SIZE);
+	if (bytes < 0)
+	{
+		free(aux);
+		return (NULL);
+	}
+	aux[bytes] = 0;
+	return (aux);
 }
 
-int	main()
-{
-	int	fd;
-	int	i;
-	
-	fd = open("test", O_RDWR);
-	i = 0;
-	while (i < 10)
+char	*expand_buf(char *buf, int fd)
+{	
+	size_t	new_len;
+	char	*new_buf;
+	char	*aux;	
+
+	aux = read_buffer(fd);
+	if (!aux)
+		return (NULL);
+	if (!aux[0])
 	{
-		get_next_line(fd);
-		i++;
+		free(aux);
+		return (NULL);
 	}
-}	
+	if (!buf)
+		return (aux);
+	else
+	{
+		new_len = ft_strlen(aux) + ft_strlen(buf);
+		new_buf = malloc(new_len + 1);
+		ft_strlcpy(new_buf, buf, new_len + 1);
+		ft_strlcat(new_buf, aux, new_len + 1);
+	}
+	free(buf);
+	free(aux);
+	return (new_buf);
+}
+
+char	*new_line(char *buf, char *line)
+{
+	char	*new_buf;
+	int		index;
+	size_t	new_len;
+
+	index = 0;
+	index += ft_strlen(line);
+	new_len = ft_strlen(buf) - ft_strlen(line);
+	new_buf = ft_substr(buf, index, new_len + 1);
+	if (!new_buf)
+		return (NULL);
+	free (buf);
+	return (new_buf);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*buf[4096];
+	char		*line;
+	size_t		old_len;	
+
+	if (fd < 0 || fd > 4095 || BUFFER_SIZE < 0)
+		return (NULL);
+	line = NULL;
+	if ((int)ft_strchr(buf[fd], '\n') == -1)
+	{
+		old_len = ft_strlen(buf[fd]);
+		buf[fd] = expand_buf(buf[fd], fd);
+		if (!buf[fd])
+			return (NULL);
+		if (old_len == ft_strlen(buf[fd]))
+			line = ft_substr(buf[fd], 0, ft_strlen(buf[fd]));
+	}
+	if (!line && (int)ft_strchr(buf[fd], '\n') != -1)
+		line = ft_substr(buf[fd], 0, ft_strchr(buf[fd], '\n') + 1);
+	if (line)
+	{
+		buf[fd] = new_line(buf[fd], line);
+		return (line);
+	}
+	return (get_next_line(fd));
+}
