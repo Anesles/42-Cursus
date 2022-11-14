@@ -6,7 +6,7 @@
 /*   By: brumarti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/14 17:49:38 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/14 18:17:37 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*get_next_line(int fd)
 		if (old_len == ft_strlen(buf[fd]))
 			line = ft_substr(buf[fd], 0, ft_strlen(buf[fd]));
 	}
-	if (!buf)
+	if (!buf[fd])
 		return (NULL);
 	if (!line && (int)ft_strchr(buf[fd], '\n') != -1)
 		line = ft_substr(buf[fd], 0, ft_strchr(buf[fd], '\n') + 1);
@@ -108,4 +108,23 @@ char	*get_next_line(int fd)
 		return (line);
 	}
 	return (get_next_line(fd));
+}
+
+int	main()
+{
+	int	fd;
+	int	i;
+	char	*line;	
+
+	fd = open("41_no_nl", O_RDWR);
+	i = 1;
+	while(1)
+	{
+		line = get_next_line(fd);
+		printf("String %d: %s", i, line);
+		if (!line)
+			return 0;
+		free(line);
+		i++;
+	}
 }
