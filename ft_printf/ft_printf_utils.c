@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 16:03:04 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/09 17:36:31 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/15 22:39:41 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/15 22:40:11 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_printf.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	length;
 
-	if (s)
-	{
-		i = 0;
-		while (s[i])
-		{
-			f(i, &s[i]);
-			i++;
-		}
-	}
+	length = 0;
+	while (s[length])
+		length++;
+	return (length);
 }

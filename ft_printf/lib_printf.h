@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:09:53 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 22:17:06 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 22:40:29 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <stdarg.h>
 # include <stdio.h>
-# include "libft/libft.h"
 
-int	ft_printf(const char *str, ...);
+size_t	ft_strlen(const char *s);
+int		ft_printf(const char *str, ...);
+int		print_char(va_list args);
 #endif

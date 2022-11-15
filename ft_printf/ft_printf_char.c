@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 16:23:08 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/03 12:27:30 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/15 22:30:13 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/15 22:32:44 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lib_printf.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+int	print_char(va_list args)
 {
-	unsigned char	*f;
+	int	c;
 
-	f = s;
-	while (n--)
-		*f++ = c;
-	return (s);
+	c = va_arg(args, int);
+	write(1, &c, 1);
+	return(1);
 }
