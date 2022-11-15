@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:39:41 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 22:40:11 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:03:26 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,15 @@ size_t	ft_strlen(const char *s)
 	while (s[length])
 		length++;
 	return (length);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	length;
+
+	if (s)
+	{
+		length = ft_strlen(s);
+		write(fd, s, length);
+	}
 }

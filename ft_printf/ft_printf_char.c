@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:30:13 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 22:32:44 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:01:46 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,13 @@ int	print_char(va_list args)
 	c = va_arg(args, int);
 	write(1, &c, 1);
 	return(1);
+}
+
+int	print_string(va_list args)
+{
+	char	*s;
+
+	s = va_arg(args, char *);
+	ft_putstr_fd(s, 1);
+	return (ft_strlen(s));
 }

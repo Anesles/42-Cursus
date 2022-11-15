@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:05:03 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 22:34:20 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:03:18 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	detect_args(char *s, va_list args)
 	int		len;
 
 	len = -2;
-	next = *(s + 1);
+	next = *s;
 	if (next == 'c')
-		print_char(args);
+		len += print_char(args);
 	else if (next == 's')
-		return 0;
+		len += print_string(args);
 	else if (next == 'p')
 		return 0;
 	else if (next == 'd' || next == 'i')
@@ -43,16 +43,33 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		len;
-	char	*s;
+	int		i;
 
+	i = 0;
 	va_start(args, str);
 	len = ft_strlen(str);
-	s = (char *) str;
-	while (s)
+	while (i <= len)
 	{
-		if (*s == '%')
-			len += detect_args(s, args);
-		s++;
+		if (str[i] == '%')
+		{
+			len += detect_args(&((char *)str)[i + 1], args);
+			i += 2;
+		}
+		else
+		{
+			write(1, &str[i], 1);
+			i++;
+		}
 	}
 	return (len);
+}
+
+int	main()
+{
+	int	i1;
+	int	i2;
+	
+	i1 = ft_printf("Eu so sei %c %s\n", 'd', "teste");
+	i2 = printf("Eu so sei %c %s\n", 'd', "teste");
+	printf("%d should be %d", i1, i2);
 }
