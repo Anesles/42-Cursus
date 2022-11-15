@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brumarti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/14 17:51:45 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 11:12:19 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*expand_buf(char *buf, int fd)
 	if (!aux[0])
 	{
 		free(aux);
-		return (NULL);
+		return (buf);
 	}
 	if (!buf)
 		return (aux);
@@ -78,7 +78,7 @@ char	*new_line(char *buf, char *line)
 	new_buf = ft_substr(buf, index, new_len + 1);
 	if (!new_buf)
 		return (NULL);
-	free (buf);
+	free(buf);
 	return (new_buf);
 }
 
