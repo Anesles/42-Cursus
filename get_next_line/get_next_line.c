@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/14 21:56:33 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 11:09:10 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,14 @@ char	*get_next_line(int fd)
 	}
 	return (get_next_line(fd));
 }
-/*
+
 int	main(void)
 {
 	int		fd;
 	int		i;
 	char	*line;	
 
-	fd = open("41_no_nl", O_RDWR);
+	fd = open("files/nl", O_RDWR);
 	i = 1;
 	while (1)
 	{
@@ -130,4 +130,3 @@ int	main(void)
 		i++;
 	}
 }
-*/
