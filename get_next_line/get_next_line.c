@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 11:17:51 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:13:20 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	main(void)
 	int		i;
 	char	*line;	
 
-	fd = open("files/big_line_no_nl", O_RDWR);
+	fd = open("files/the-king-james-bible.txt", O_RDWR);
 	i = 1;
 	while (1)
 	{
