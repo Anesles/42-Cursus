@@ -6,13 +6,11 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 14:13:20 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:21:08 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-#include <fcntl.h>
 
 char	*read_buffer(int fd)
 {
@@ -108,25 +106,4 @@ char	*get_next_line(int fd)
 		return (line);
 	}
 	return (get_next_line(fd));
-}
-
-int	main(void)
-{
-	int		fd;
-	int		i;
-	char	*line;	
-
-	fd = open("files/the-king-james-bible.txt", O_RDWR);
-	i = 1;
-	while (1)
-	{
-		line = get_next_line(fd);
-		printf("String %d: %s", i, line);
-		if ((int)ft_strchr(line, '\n') == -1)
-			printf("\n");
-		if (!line)
-			return (0);
-		free(line);
-		i++;
-	}
 }
