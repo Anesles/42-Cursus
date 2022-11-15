@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:05:03 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 23:03:18 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 23:06:11 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	detect_args(char *s, va_list args)
 		return 0;
 	else if (next == 'u')
 		return 0;
-	else if (next == 'x' || next || 'X')
+	else if (next == 'x' || next == 'X')
 		return 0;
 	else if (next == '%')
 	{
