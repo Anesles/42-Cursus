@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:30:13 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 16:50:54 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:48:45 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,3 @@ int	print_string(va_list args)
 	ft_putstr_fd(s, 1);
 	return (ft_strlen(s));
 }
-
