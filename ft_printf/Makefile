@@ -6,27 +6,27 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 22:05:52 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/16 16:28:47 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/16 16:32:37 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprint.a
+NAME =		libftprint.a
 
-SRC = ft_printf.c ft_printf_char.c ft_printf_number.c ft_printf_utils.c
+SRC =		ft_printf.c ft_printf_char.c ft_printf_number.c ft_printf_utils.c
 
-OBJ = $(SRC=.c:.0)
+OBJ =		$(SRC:.c=.o)
 
-CC = cc
+CC =		cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(NAME):	$(OBJ)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 	
 fclean: clean
 	rm -f $(NAME)

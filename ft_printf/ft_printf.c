@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:05:03 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 16:27:26 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:34:29 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (len);
-}
-
-int	main()
-{
-	int	i1;
-	int	i2;
-	int	x;
-	int *ptr;
-
-	x = 0;
-	ptr = &x;
-	i1 = ft_printf("Eu so sei %c %s %p %d %i %u %x\n", 'c', "teste", ptr, 2147483647, -2147483647-1, 89, 0x1254ABC);
-	i2 = printf("Eu so sei %c %s %p %d %i %u %x\n", 'c', "teste", ptr, 2147483647, -2147483647-1, 89, 0x1254ABC);
-	printf("%d should be %d", i1, i2);
 }
