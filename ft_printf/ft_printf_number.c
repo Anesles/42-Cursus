@@ -6,11 +6,11 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:10:55 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 16:33:14 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:39:31 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_printf.h"
+#include "ft_printf.h"
 
 int	print_pointer(va_list args)
 {

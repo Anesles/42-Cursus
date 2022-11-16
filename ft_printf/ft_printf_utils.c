@@ -6,11 +6,11 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:39:41 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 16:33:46 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:39:46 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib_printf.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *s)
 {
