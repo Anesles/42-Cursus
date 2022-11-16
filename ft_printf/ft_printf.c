@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:05:03 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 23:06:25 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:27:26 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	detect_args(char *s, va_list args)
 	else if (next == 's')
 		len += print_string(args);
 	else if (next == 'p')
-		return 0;
+		len += print_pointer(args);
 	else if (next == 'd' || next == 'i')
-		return 0;
+		len += print_int(args);
 	else if (next == 'u')
-		return 0;
+		len += print_uint(args);
 	else if (next == 'x' || next == 'X')
-		return 0;
+		len += print_hex(args, next);
 	else if (next == '%')
 	{
 		write(1, "%", 1);
@@ -48,7 +48,7 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	va_start(args, str);
 	len = ft_strlen(str);
-	while (i <= len)
+	while (str[i] != 0)
 	{
 		if (str[i] == '%')
 		{
@@ -61,6 +61,7 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 	}
+	va_end(args);
 	return (len);
 }
 
@@ -68,8 +69,12 @@ int	main()
 {
 	int	i1;
 	int	i2;
-	
-	i1 = ft_printf("Eu so sei %c %s\n", 'd', "teste");
-	i2 = printf("Eu so sei %c %s\n", 'd', "teste");
+	int	x;
+	int *ptr;
+
+	x = 0;
+	ptr = &x;
+	i1 = ft_printf("Eu so sei %c %s %p %d %i %u %x\n", 'c', "teste", ptr, 2147483647, -2147483647-1, 89, 0x1254ABC);
+	i2 = printf("Eu so sei %c %s %p %d %i %u %x\n", 'c', "teste", ptr, 2147483647, -2147483647-1, 89, 0x1254ABC);
 	printf("%d should be %d", i1, i2);
 }

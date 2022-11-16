@@ -6,11 +6,13 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 16:21:08 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:41:10 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
 char	*read_buffer(int fd)
 {
@@ -106,4 +108,22 @@ char	*get_next_line(int fd)
 		return (line);
 	}
 	return (get_next_line(fd));
+}
+
+int	main()
+{
+	int fd;
+	char	*line;
+
+	fd = open("gnlTester/files/big_line_no_nl", O_RDWR);
+	while (1)
+	{
+		line = get_next_line(fd);
+		printf("%s", line);
+		if (ft_strchr(line, '\n'))
+			printf("\n");
+		free(line);
+		if (!line)
+			return (0);
+	}
 }
