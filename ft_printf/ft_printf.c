@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:05:03 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 16:38:45 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:41:03 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,10 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (len);
 }
+
+// int	main()
+// {
+// 	int	i1 = ft_printf("%u\n", -1);
+// 	int	i2 = printf("%u\n", -1);
+// 	printf("%d should be %d\n", i1, i2);
+// }

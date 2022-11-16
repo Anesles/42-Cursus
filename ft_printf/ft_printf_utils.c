@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:39:41 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 16:39:46 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:27:59 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,36 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-int	ft_hex(long long int p, char c)
+void	ft_hex(long int p, char c)
 {
-	char	*hex;
-	int		len;
+	char	*base;
 
-	hex = "0123456789abcdef";
+	base = "0123456789abcdef";
 	if (c == 'X')
-		hex = "0123456789ABCDEF";
-	len = 0;
+		base = "0123456789ABCDEF";
 	if (p < 0)
-	{
-		p = -p;
-		len++;
-	}
+		p = (4294967295 - (p * -1)) + 1;
 	if (p >= 16)
-		len += ft_hex(p / 16, c);
-	if (c == 'X')
-		write(1, &hex[p % 16], 1);
+	{
+		ft_hex(p / 16, c);
+		ft_hex(p % 16, c);
+	}
 	else
-		write(1, &hex[p % 16], 1);
-	return (len + 1);
+		write(1, &base[p], 1);
+}
+
+void	ft_ptr(unsigned long long p)
+{
+	char	*base;
+
+	base = "0123456789abcdef";
+	if (p >= 16)
+	{
+		ft_ptr(p / 16);
+		ft_ptr(p % 16);
+	}
+	else
+		write(1, &base[p], 1);
 }
 
 int	ft_int(int n)
@@ -71,6 +80,7 @@ int	ft_int(int n)
 	if (n < 0)
 	{
 		n = -n;
+		write(1, "-", 1);
 		len++;
 	}
 	if (n >= 10)

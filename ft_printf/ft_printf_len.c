@@ -1,37 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_char.c                                   :+:      :+:    :+:   */
+/*   ft_printf_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 22:30:13 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 16:50:54 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/16 18:02:50 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/16 18:40:18 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(va_list args)
+int	len_hex(unsigned int p)
 {
-	int	c;
+	int	len;
 
-	c = va_arg(args, int);
-	write(1, &c, 1);
-	return (1);
-}
-
-int	print_string(va_list args)
-{
-	char	*s;
-
-	s = va_arg(args, char *);
-	if (!s)
+	if (p == 0)
+		return (1);
+	len = 0;
+	while (p != 0)
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
+		p /= 16;
+		len++;
 	}
-	ft_putstr_fd(s, 1);
-	return (ft_strlen(s));
+	return (len);
 }
 
+int	len_ptr(unsigned long long p)
+{
+	int	len;
+
+	len = 0;
+	while (p != 0)
+	{
+		p /= 16;
+		len++;
+	}
+	return (len);
+}
+
+int	ft_uint(unsigned int n)
+{
+	char	*base;
+	int		len;
+
+	base = "0123456789";
+	len = 0;
+	if (n >= 10)
+		len += ft_int(n / 10);
+	write(1, &base[n % 10], 1);
+	return (len + 1);
+}
