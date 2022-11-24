@@ -6,32 +6,11 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:39:41 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 18:27:59 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:17:37 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	length;
-
-	length = 0;
-	while (s[length])
-		length++;
-	return (length);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	size_t	length;
-
-	if (s)
-	{
-		length = ft_strlen(s);
-		write(fd, s, length);
-	}
-}
+#include "../libft.h"
 
 void	ft_hex(long int p, char c)
 {

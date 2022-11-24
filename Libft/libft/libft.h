@@ -6,13 +6,14 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:15:28 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 15:55:30 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:16:25 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include "get_next_line/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 # include <stdio.h>
 # include <stdarg.h>
 # include <fcntl.h>
@@ -37,6 +38,7 @@ int			ft_strncmp(const char *s1, const char *s2, unsigned int n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_atoi(const char *nptr);
 int			ft_lstsize(t_list *lst);
+int			ft_printf(const char *str, ...);
 
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strchr(const char *s, int c);

@@ -6,11 +6,11 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:30:13 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 18:48:45 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:17:09 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../libft.h"
 
 int	print_char(va_list args)
 {

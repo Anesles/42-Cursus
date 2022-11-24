@@ -6,13 +6,13 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 22:05:03 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 18:47:39 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:17:45 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../libft.h"
 
-int	detect_args(char *s, va_list args)
+static int	detect_args(char *s, va_list args)
 {
 	char	next;
 	int		len;

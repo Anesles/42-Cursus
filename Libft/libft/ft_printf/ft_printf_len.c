@@ -6,11 +6,11 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 18:02:50 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/16 18:48:00 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:17:18 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../libft.h"
 
 int	len_hex(unsigned int p)
 {
