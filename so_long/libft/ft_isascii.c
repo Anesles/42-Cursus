@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 22:21:33 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/02 15:44:53 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/02 15:52:56 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_isascii(int c)
 {
-	ft_printf("Teste\n");
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

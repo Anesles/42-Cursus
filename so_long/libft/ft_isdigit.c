@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 22:21:33 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/02 14:25:46 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/02 15:48:06 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_isdigit(int c)
 {
-	ft_printf("Teste\n");
+	if ((c >= 48 && c <= 57))
+		return (1);
+	return (0);
 }

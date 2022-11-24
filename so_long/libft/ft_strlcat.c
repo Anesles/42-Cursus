@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 22:21:33 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/03 11:42:02 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/10 14:39:00 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(void)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	ft_printf("Teste\n");
+	size_t	length;
+	size_t	index;
+
+	if (size == 0 || size <= ft_strlen(dst))
+		return (size + ft_strlen(src));
+	length = ft_strlen(dst);
+	index = 0;
+	while (src[index] && length + 1 < size)
+	{
+		dst[length] = src[index];
+		length++;
+		index++;
+	}
+	dst[length] = 0;
+	return (length + ft_strlen(&src[index]));
 }

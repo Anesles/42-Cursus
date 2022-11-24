@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 22:21:33 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/03 15:34:01 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/07 22:38:48 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strchr(const char *s, int c)
 {
-	ft_printf("Teste\n");
+	size_t	i;
+	size_t	length;
+	char	*f;
+
+	length = ft_strlen(s);
+	i = 0;
+	while (i <= length)
+	{
+		if (s[i] == c)
+		{
+			f = (char *)&s[i];
+			return (f);
+		}
+		i++;
+	}
+	return (NULL);
 }

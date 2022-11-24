@@ -1,18 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 22:21:33 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/03 22:12:20 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/10 18:25:43 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_atoi(const char *nptr)
 {
-	ft_printf("Teste\n");
+	char	*str;
+	int		count_minus;
+	int		n;
+
+	str = (char *)nptr;
+	count_minus = 1;
+	n = 0;
+	while (*str == ' ' || (*str >= 9 && *str <= 14))
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			count_minus = -1;
+		str++;
+	}
+	while (*str >= 48 && *str <= 57)
+	{
+		n = n * 10 + (*str - 48);
+		str++;
+	}
+	return (n * count_minus);
 }
