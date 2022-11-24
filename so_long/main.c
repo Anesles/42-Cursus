@@ -6,13 +6,16 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 22:21:33 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/24 23:02:11 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
-int	main(void)
+int	main(int argc, char const *argv[])
 {
-	ft_printf("Teste\n");
+	if (argc > 1)
+	{
+		
+	}
 }
