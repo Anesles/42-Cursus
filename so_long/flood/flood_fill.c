@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_extra.c                                      :+:      :+:    :+:   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 18:06:28 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 20:33:58 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/25 21:44:57 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/25 22:09:09 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
-void	check_extra(t_map map)
+static char	**convert_map(t_map map)
 {
-	int		i;
-	int		j;
-	char	c;
-	char	**tmap;
+	char	**new_map;
+	int	i;
 
-	tmap = map.map;
-	i = 0;
+	new_map = map.map;
+	i = 1;
 	while (i < map.n_lines)
 	{
-		j = 0;
+		j = 1;
 		while (j < map.n_cols)
 		{
-			c = tmap[i][j];
-			if (c != '0' || c != '1' || c != 'E' || c != 'P' || c != 'C')
-				send_error("Error\nFound an invalid char.");
-			j++;
+			
 		}
-		i++;
 	}
+}
+
+void	flood_fill(t_map map)
+{
+	char	**new_map;
+
+	new_map = convert_map(map);
 }
