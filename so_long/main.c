@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 17:31:05 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:01:49 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	get_lines(int fd)
 	int		len;
 	char	*line;
 
-	len = 0; 
+	len = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -27,7 +27,7 @@ static int	get_lines(int fd)
 	}
 }
 
-static t_map get_map(int fd, char	*file)
+static t_map	get_map(int fd, char *file)
 {
 	int		i;
 	t_map	map;
@@ -41,7 +41,7 @@ static t_map get_map(int fd, char	*file)
 	i = 0;
 	while (i < map.n_lines)
 	{
-		map.map[i] = get_next_line(fd);
+		map.map[i] = ft_strtrim(get_next_line(fd), "\n\r\t\v\f");
 		if (!map.map[i])
 		{
 			free(map.map);
