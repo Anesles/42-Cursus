@@ -6,11 +6,11 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/25 15:17:49 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/25 16:27:01 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long.a
+NAME = so_long
 
 CC = cc
 

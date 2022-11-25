@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 16:02:13 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:17:15 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,15 @@ int	main(int argc, char *argv[])
 	int		fd;
 	int		i;
 
+	map = 0;
 	if (argc > 1)
 	{
 		fd = open(argv[1], O_RDONLY);
 		map = get_map(fd, (char *)argv[1]);
+		check_valid(map);
 	}
 	i = 0;
-	while (i < 5)
+	while (1)
 	{
 		ft_printf("%s", map[i]);
 		i++;
