@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/25 17:23:04 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/25 18:21:03 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,11 @@ LIBFTPATH = ./libft/
 
 LIBFTNAME = libft.a
 
-SRC = main.c error_check/check_valid.c error_check/send_error.c
+SRC = main.c
 
-OBJ = $(SRC:.c=.o)
+ERROR = error_check/check_valid.c error_check/send_error.c error_check/check_extra.c
+
+OBJ = $(SRC:.c=.o) $(ERROR:.c=.o)
 
 all: $(NAME)
 

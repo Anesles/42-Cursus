@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   check_extra.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 16:22:42 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 18:20:38 by brumarti         ###   ########.fr       */
+/*   Created: 2022/11/25 18:06:28 by brumarti          #+#    #+#             */
+/*   Updated: 2022/11/25 18:21:17 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../libft/libft.h"
 
-typedef struct s_map
+void	check_extra(t_map map)
 {
-	char	**map;
-	int		n_cols;
-	int		n_lines;
-	int		p_pos[2];
-	int		e_pos[2];
-}	t_map;
+	int		i;
+	int		j;
+	char	c;
+	char	**tmap;
 
-int		main(int argc, char *argv[]);
-void	send_error(char	*message);
-void	check_valid(t_map map);
-void	check_extra(t_map map);
-
-#endif
+	tmap = map.map;
+	i = 0;
+	while (i < map.n_lines)
+	{
+		j = 0;
+		while (j < map.n_cols)
+		{
+			c = tmap[i][j];
+			if (c != '0' || c != '1' || c != 'E' ||
+				c != 'P' || c != 'C')
+				send_error("Error\nFound an invalid char.");
+			j++;
+		}
+		i++;
+	}
+}

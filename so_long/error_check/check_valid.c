@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:29:32 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 18:03:34 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:19:44 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	check_closed(t_map map)
 	i = 0;
 	while (i < map.n_lines)
 	{
-		if (i == 0 || i == (map.n_lines - 1))
+		if (i == 0 && i == map.n_lines - 1)
 		{
 			j = 0;
 			while (j < map.n_cols)
@@ -59,7 +59,7 @@ static t_map	add_element(t_map map, char c, int x, int y)
 {
 	if (c == 'P')
 	{
-		if (map.p_pos[0] != 0)
+		if (map.p_pos[0] == 0)
 		{
 			map.p_pos[0] = x;
 			map.p_pos[1] = y;
@@ -69,7 +69,7 @@ static t_map	add_element(t_map map, char c, int x, int y)
 	}
 	else if (c == 'E')
 	{
-		if (map.e_pos[0] != 0)
+		if (map.e_pos[0] == 0)
 		{
 			map.e_pos[0] = x;
 			map.e_pos[1] = y;
@@ -90,7 +90,7 @@ static t_map	check_elements(t_map map)
 	i = 0;
 	while (i < ret.n_lines)
 	{
-		if (i != 0 || i != ret.n_lines - 1)
+		if (i != 0 && i != ret.n_lines - 1)
 		{
 			j = 0;
 			while (j < ret.n_cols)
@@ -115,5 +115,6 @@ void	check_valid(t_map map)
 	map.n_cols = check_rectangle(map, line_len);
 	check_closed(map);
 	map = check_elements(map);
+	check_extra(map);
 	ft_printf("N_cols:%d;\nN_lines:%d;\n", map.n_cols, map.n_lines);
 }
