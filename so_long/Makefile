@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/24 22:25:10 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/25 15:17:49 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFTPATH = ./libft/
 
@@ -38,3 +38,6 @@ fclean: clean
 	rm -f $(LIBFTPATH)$(LIBFTNAME) $(NAME)
 
 re: fclean all
+
+run:
+	./so_long.a

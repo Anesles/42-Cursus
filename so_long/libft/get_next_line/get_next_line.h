@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:58:49 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 15:35:36 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:00:22 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,6 @@
 
 char	*get_next_line(int fd);
 size_t	ft_strchrr(const char *s, int c);
+size_t	ft_strlenn(const char *s);
+
 #endif
