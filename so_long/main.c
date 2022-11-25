@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 16:49:31 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:31:05 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	get_lines(int fd)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (!line)
+		if (!line || !ft_isprint(line[0]))
 			return (len);
 		len++;
 	}
