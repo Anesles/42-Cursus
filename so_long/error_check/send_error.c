@@ -6,12 +6,14 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:20:10 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 16:21:42 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:55:36 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../libft/libft.h"
 
 void	send_error(char	*message)
 {
 	ft_printf("%s\n", message);
-	exit();
+	exit(2);
 }

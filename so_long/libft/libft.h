@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:15:28 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 18:16:25 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:32:07 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include "get_next_line/get_next_line.h"
 # include "ft_printf/ft_printf.h"
+# include "../so_long.h"
 # include <stdio.h>
 # include <stdarg.h>
 # include <fcntl.h>

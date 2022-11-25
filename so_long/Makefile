@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/25 16:27:01 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/25 17:23:04 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBFTPATH = ./libft/
 
 LIBFTNAME = libft.a
 
-SRC = main.c
+SRC = main.c error_check/check_valid.c error_check/send_error.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFTPATH)$(LIBFTNAME) -o $(NAME)
 
 clean :
-	rm -rf *.o
+	rm -rf $(OBJ)
 	cd libft && $(MAKE) clean
 
 fclean: clean 

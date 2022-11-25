@@ -6,13 +6,13 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 16:17:15 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:49:31 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
-int	get_lines(int fd)
+static int	get_lines(int fd)
 {
 	int		len;
 	char	*line;
@@ -27,26 +27,25 @@ int	get_lines(int fd)
 	}
 }
 
-char	**get_map(int fd, char	*file)
+static t_map get_map(int fd, char	*file)
 {
-	int		len_lines;
 	int		i;
-	char	**map;
+	t_map	map;
 
-	len_lines = get_lines(fd);
-	map = (char **)malloc(len_lines * sizeof(char *));
-	if (!map)
-		return (NULL);
+	map.n_lines = get_lines(fd);
+	map.map = (char **)malloc(map.n_lines * sizeof(char *));
+	if (!map.map)
+		send_error("failed map alloc.");
 	close(fd);
 	fd = open(file, O_RDONLY);
 	i = 0;
-	while (i < len_lines)
+	while (i < map.n_lines)
 	{
-		map[i] = get_next_line(fd);
-		if (!map[i])
+		map.map[i] = get_next_line(fd);
+		if (!map.map[i])
 		{
-			free(map);
-			return (NULL);
+			free(map.map);
+			send_error("failed map[] alloc.");
 		}
 		i++;
 	}
@@ -55,11 +54,11 @@ char	**get_map(int fd, char	*file)
 
 int	main(int argc, char *argv[])
 {
-	char	**map;
+	t_map	map;
 	int		fd;
 	int		i;
 
-	map = 0;
+	map.map = 0;
 	if (argc > 1)
 	{
 		fd = open(argv[1], O_RDONLY);
@@ -67,9 +66,9 @@ int	main(int argc, char *argv[])
 		check_valid(map);
 	}
 	i = 0;
-	while (1)
+	while (i < map.n_lines)
 	{
-		ft_printf("%s", map[i]);
+		ft_printf("%s", map.map[i]);
 		i++;
 	}
 }
