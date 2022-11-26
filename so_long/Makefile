@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/25 18:21:03 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/25 22:49:10 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRC = main.c
 
 ERROR = error_check/check_valid.c error_check/send_error.c error_check/check_extra.c
 
-OBJ = $(SRC:.c=.o) $(ERROR:.c=.o)
+FLOOD = flood/flood_fill.c
+
+OBJ = $(SRC:.c=.o) $(ERROR:.c=.o) $(FLOOD:.c=.o)
 
 all: $(NAME)
 

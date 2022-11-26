@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 18:01:49 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/26 01:11:03 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	get_lines(int fd)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (!line || !ft_isprint(line[0]))
+		if (!line)
 			return (len);
 		len++;
 	}
@@ -35,7 +35,7 @@ static t_map	get_map(int fd, char *file)
 	map.n_lines = get_lines(fd);
 	map.map = (char **)malloc(map.n_lines * sizeof(char *));
 	if (!map.map)
-		send_error("failed map alloc.");
+		send_error("Error\nFailed map alloc.");
 	close(fd);
 	fd = open(file, O_RDONLY);
 	i = 0;
@@ -45,7 +45,7 @@ static t_map	get_map(int fd, char *file)
 		if (!map.map[i])
 		{
 			free(map.map);
-			send_error("failed map[] alloc.");
+			send_error("Error\nFailed map[] alloc.");
 		}
 		i++;
 	}
@@ -56,19 +56,15 @@ int	main(int argc, char *argv[])
 {
 	t_map	map;
 	int		fd;
-	int		i;
 
 	map.map = 0;
 	if (argc > 1)
 	{
 		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+			send_error("Error\nFailed to open file.");
 		map = get_map(fd, (char *)argv[1]);
-		check_valid(map);
-	}
-	i = 0;
-	while (i < map.n_lines)
-	{
-		ft_printf("%s", map.map[i]);
-		i++;
+		check_valid(&map);
+		flood_fill(map);
 	}
 }

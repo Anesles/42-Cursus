@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:22:42 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 18:20:38 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/26 00:17:27 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ typedef struct s_map
 }	t_map;
 
 int		main(int argc, char *argv[]);
+
 void	send_error(char	*message);
-void	check_valid(t_map map);
+void	check_valid(t_map *map);
 void	check_extra(t_map map);
+void	flood_fill(t_map map);
 
 #endif

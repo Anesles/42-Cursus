@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:06:28 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 20:33:58 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/26 00:52:21 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_extra(t_map map)
 		while (j < map.n_cols)
 		{
 			c = tmap[i][j];
-			if (c != '0' || c != '1' || c != 'E' || c != 'P' || c != 'C')
+			if (c != '0' && c != '1' && c != 'E' && c != 'P' && c != 'C')
 				send_error("Error\nFound an invalid char.");
 			j++;
 		}
