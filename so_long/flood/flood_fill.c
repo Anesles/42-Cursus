@@ -24,9 +24,10 @@ static void	print_map(char **map, int max_l, int x, int y)
 }
 */
 
-static void	fill(char	***new_map, int x, int y, int max_l, int max_c)
+static void	fill(char	***new_map, int x, int y, t_map map)
 {
-	if (x < 0 || x >= max_l || y < 0 || y >= max_c || (*new_map)[x][y] == '1' || (*new_map)[x][y] == ' ')
+	if (x < 0 || x >= map.n_lines || y < 0 || y >= map.n_cols
+		|| (*new_map)[x][y] == '1' || (*new_map)[x][y] == ' ')
 		return ;
 	else
 	{
@@ -34,20 +35,20 @@ static void	fill(char	***new_map, int x, int y, int max_l, int max_c)
 		//system("clear");
 		//print_map(*new_map, max_l, x, y);
 		//usleep(200000);
-		fill(new_map, x - 1, y, max_l, max_c);
-		fill(new_map, x + 1, y, max_l, max_c);
-		fill(new_map, x, y - 1, max_l, max_c);
-		fill(new_map, x, y + 1, max_l, max_c);
+		fill(new_map, x - 1, y, map);
+		fill(new_map, x + 1, y, map);
+		fill(new_map, x, y - 1, map);
+		fill(new_map, x, y + 1, map);
 	}
 }
 
-static void check_path(char **fill_map, t_map map)
+static void	check_path(char **fill_map, t_map map)
 {
 	int		i;
 	int		j;
 	int		valid;
 
-	if ( fill_map[map.e_pos[0]][map.e_pos[1]] != ' ')
+	if (fill_map[map.e_pos[0]][map.e_pos[1]] != ' ')
 		send_error("Error\nInvalid path (Exit not reachable).");
 	i = 1;
 	valid = 0;
@@ -60,7 +61,7 @@ static void check_path(char **fill_map, t_map map)
 			{
 				valid = 1;
 				if (fill_map[i][j] != ' ')
-					send_error("Error\nInvalid path (Collectible not reachable).");
+					send_error("Error\nInvalid path(Collectible unreachable).");
 			}
 			j++;
 		}
@@ -76,13 +77,13 @@ void	flood_fill(t_map map)
 	int		i;
 
 	i = 0;
-	new_map = (char **)malloc(map.n_lines * sizeof(char *));
-	while(i < map.n_lines)
+	new_map = (char **) malloc(map.n_lines * sizeof(char *));
+	while (i < map.n_lines)
 	{
 		new_map[i] = ft_strdup(map.map[i]);
 		i++;
 	}
-	fill(&new_map, map.p_pos[0], map.p_pos[1], map.n_lines, map.n_cols);
+	fill(&new_map, map.p_pos[0], map.p_pos[1], map);
 	check_path(new_map, map);
 	free(new_map);
 }
