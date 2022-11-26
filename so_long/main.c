@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/26 01:11:03 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/26 02:16:13 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	get_lines(int fd)
 		line = get_next_line(fd);
 		if (!line)
 			return (len);
+		free(line);
 		len++;
 	}
 }
@@ -58,13 +59,16 @@ int	main(int argc, char *argv[])
 	int		fd;
 
 	map.map = 0;
-	if (argc > 1)
+	if (argc == 2)
 	{
+		if (!ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])))
+			send_error("Error\nBad file extension.");
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
 			send_error("Error\nFailed to open file.");
 		map = get_map(fd, (char *)argv[1]);
 		check_valid(&map);
-		flood_fill(map);
 	}
+	else
+		send_error("Error\nMore than 1 argument.");
 }

@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:29:32 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/26 00:57:43 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/26 02:17:08 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	check_closed(t_map map)
 	i = 0;
 	while (i < map.n_lines)
 	{
-		if (i == 0 && i == map.n_lines - 1)
+		if (i == 0 || i == map.n_lines - 1)
 		{
 			j = 0;
 			while (j < map.n_cols)
@@ -82,10 +82,12 @@ static t_map	add_element(t_map map, char c, int x, int y)
 
 static void	check_elements(t_map *map)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
+	int	valid;
 
 	i = 0;
+	valid = 0;
 	while (i < (*map).n_lines)
 	{
 		if (i != 0 && i != (*map).n_lines - 1)
@@ -94,12 +96,17 @@ static void	check_elements(t_map *map)
 			while (j < (*map).n_cols)
 			{
 				if ((*map).map[i][j] == 'E' || (*map).map[i][j] == 'P')
+				{
 					(*map) = add_element((*map), (*map).map[i][j], i, j);
+					valid += 1;
+				}
 				j++;
 			}
 		}
 		i++;
 	}
+	if (valid != 2)
+		send_error("Error\nMissing either P or E.");
 }
 
 void	check_valid(t_map *map)
@@ -114,6 +121,6 @@ void	check_valid(t_map *map)
 	map->n_cols = check_rectangle(*map, line_len);
 	check_closed(*map);
 	check_elements(map);
-	ft_printf("%d %d\n%d %d\n", map->p_pos[0], map->p_pos[1], map->e_pos[0], map->e_pos[1]);
 	check_extra(*map);
+	flood_fill(*map);
 }
