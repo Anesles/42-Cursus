@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-MINILIBX = -I /usr/local/include -g -L /usr/local/lib -l mlx -lX11 -lXext
+MINILIBX = -I /usr/local/include -g -L /usr/local/lib -l mlx -lX11 -lXext -lGLEW -lglfw -lGL -lm
 
 LIBFTPATH = ./libft/
 

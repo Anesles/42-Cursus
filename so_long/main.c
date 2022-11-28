@@ -59,6 +59,9 @@ int	main(int argc, char *argv[])
 	int		fd;
 	void	*mlx;
 	void	*mlx_win;
+	void	*image_ptr;
+	int		width;
+	int		height;
 
 	map.map = 0;
 	if (argc == 2)
@@ -71,7 +74,9 @@ int	main(int argc, char *argv[])
 		map = get_map(fd, (char *)argv[1]);
 		check_valid(&map);
 		mlx = mlx_init();
-		mlx_new_window(mlx, 1920, 1080, "Teste");
+		mlx_win = mlx_new_window(mlx, 1920, 1080, "Teste");
+		image_ptr = mlx_xpm_file_to_image(mlx, "textures/capybara.xpm", &width, &height);
+		mlx_put_image_to_window(mlx, mlx_win, image_ptr, 0, 0);
 		mlx_loop(mlx);
 	}
 	else
