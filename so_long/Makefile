@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/25 22:49:10 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/28 15:48:50 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ ERROR = error_check/check_valid.c error_check/send_error.c error_check/check_ext
 
 FLOOD = flood/flood_fill.c
 
-OBJ = $(SRC:.c=.o) $(ERROR:.c=.o) $(FLOOD:.c=.o)
+GAME = game/game_main.c
+
+OBJ = $(SRC:.c=.o) $(ERROR:.c=.o) $(FLOOD:.c=.o) $(GAME:.c=.o)
 
 all: $(NAME)
 

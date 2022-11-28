@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/26 02:16:13 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:49:08 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,6 @@ int	main(int argc, char *argv[])
 {
 	t_map	map;
 	int		fd;
-	void	*mlx;
-	void	*mlx_win;
-	void	*image_ptr;
-	int		width;
-	int		height;
 
 	map.map = 0;
 	if (argc == 2)
@@ -73,11 +68,7 @@ int	main(int argc, char *argv[])
 			send_error("Error\nFailed to open file.");
 		map = get_map(fd, (char *)argv[1]);
 		check_valid(&map);
-		mlx = mlx_init();
-		mlx_win = mlx_new_window(mlx, 1920, 1080, "Teste");
-		image_ptr = mlx_xpm_file_to_image(mlx, "textures/capybara.xpm", &width, &height);
-		mlx_put_image_to_window(mlx, mlx_win, image_ptr, 0, 0);
-		mlx_loop(mlx);
+		game_main();
 	}
 	else
 		send_error("Error\nMore than 1 argument.");
