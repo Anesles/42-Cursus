@@ -57,6 +57,8 @@ int	main(int argc, char *argv[])
 {
 	t_map	map;
 	int		fd;
+	void	*mlx;
+	void	*mlx_win;
 
 	map.map = 0;
 	if (argc == 2)
@@ -68,6 +70,9 @@ int	main(int argc, char *argv[])
 			send_error("Error\nFailed to open file.");
 		map = get_map(fd, (char *)argv[1]);
 		check_valid(&map);
+		mlx = mlx_init();
+		mlx_new_window(mlx, 1920, 1080, "Teste");
+		mlx_loop(mlx);
 	}
 	else
 		send_error("Error\nMore than 1 argument.");

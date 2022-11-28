@@ -24,6 +24,7 @@ static void	print_map(char **map, int max_l, int x, int y)
 }
 */
 
+
 static void	fill(char	***new_map, int x, int y, t_map map)
 {
 	if (x < 0 || x >= map.n_lines || y < 0 || y >= map.n_cols
@@ -33,7 +34,7 @@ static void	fill(char	***new_map, int x, int y, t_map map)
 	{
 		(*new_map)[x][y] = ' ';
 		//system("clear");
-		//print_map(*new_map, max_l, x, y);
+		//print_map(*new_map, map.n_lines, x, y);
 		//usleep(200000);
 		fill(new_map, x - 1, y, map);
 		fill(new_map, x + 1, y, map);

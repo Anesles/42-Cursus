@@ -16,6 +16,8 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
+MINILIBX = -I /usr/local/include -g -L /usr/local/lib -l mlx -lX11 -lXext
+
 LIBFTPATH = ./libft/
 
 LIBFTNAME = libft.a
@@ -32,7 +34,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C $(LIBFTPATH)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFTPATH)$(LIBFTNAME) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFTPATH)$(LIBFTNAME) $(MINILIBX) -o $(NAME)
 
 clean :
 	rm -rf $(OBJ)
