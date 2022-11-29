@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:22:42 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 16:44:28 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:12:07 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ typedef struct s_mlx
 	void	*ptr;
 	void	*win;
 }	t_mlx;
+
+typedef struct s_imgs
+{
+	t_img	p;
+	t_img	w;
+	t_img	c;
+	t_img	e;
+}	t_imgs;
+
 
 int		main(int argc, char *argv[]);
 
