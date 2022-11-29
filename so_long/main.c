@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main->c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
+/*   By: brumarti <brumarti@student->42->fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 15:36:19 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:48:36 by brumarti         ###   ########->fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,30 @@ static int	get_lines(int fd)
 	}
 }
 
-static t_map	get_map(int fd, char *file)
+static void	get_map(int fd, char *file, t_map *map)
 {
 	int		i;
-	t_map	map;
+	char	*line;
 
-	map.n_lines = get_lines(fd);
-	map.map = (char **)malloc(map.n_lines * sizeof(char *));
-	if (!map.map)
+	map->n_lines = get_lines(fd);
+	map->map = (char **)malloc(map->n_lines * sizeof(char *));
+	if (!map->map)
 		send_error("Error\nFailed map alloc.");
 	close(fd);
 	fd = open(file, O_RDONLY);
 	i = 0;
-	while (i < map.n_lines)
+	while (i < map->n_lines)
 	{
-		map.map[i] = ft_strtrim(get_next_line(fd), "\n\r\t\v\f");
-		if (!map.map[i])
+		line = get_next_line(fd);
+		map->map[i] = ft_strtrim(line, "\n\r\t\v\f");
+		free(line);
+		if (!map->map[i])
 		{
-			free_map(&map.map, map.n_lines);
+			free_map(*map);
 			send_error("Error\nFailed map[] alloc.");
 		}
 		i++;
 	}
-	return (map);
 }
 
 int	main(int argc, char *argv[])
@@ -66,10 +67,11 @@ int	main(int argc, char *argv[])
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
 			send_error("Error\nFailed to open file.");
-		map = get_map(fd, (char *)argv[1]);
+		get_map(fd, (char *)argv[1], &map);
 		check_valid(&map);
 		game_main(map);
-		free_map(&map.map, map.n_lines);
+		free_map(map);
+		close(fd);
 	}
 	else
 		send_error("Error\nMore than 1 argument.");

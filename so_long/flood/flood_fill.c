@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 21:44:57 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 15:15:29 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:16:02 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	print_map(char **map, int max_l, int x, int y)
 	ft_printf("x:%d  y:%d\n", x, y);
 }
 */
-
 
 static void	fill(char	***new_map, int x, int y, t_map map)
 {
@@ -86,5 +85,8 @@ void	flood_fill(t_map map)
 	}
 	fill(&new_map, map.p_pos[0], map.p_pos[1], map);
 	check_path(new_map, map);
-	free_map(&new_map, map.n_lines);
+	i = 0;
+	while (i < map.n_lines)
+		free(new_map[i++]);
+	free(new_map);
 }

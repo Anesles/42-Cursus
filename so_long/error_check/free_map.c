@@ -6,22 +6,21 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:14:58 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 15:43:08 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:44:10 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
-void	free_map(char ***map, int lines)
+void	free_map(t_map map)
 {
 	int	i;
 
-	ft_printf("cheguei aqui e fiz magia");
 	i = 0;
-	while(i < lines)
+	while(i < map.n_lines)
 	{
-		free((*map)[i]);
+		free(map.map[i]);
 		i++;
 	}
-	free(*map);
+	free(map.map);
 }
