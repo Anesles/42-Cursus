@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:22:42 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/28 15:48:23 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:49:06 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	check_valid(t_map *map);
 void	check_extra(t_map map);
 void	flood_fill(t_map map);
 
-void	game_main(void);
+void	game_main(t_map map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/28 15:49:08 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:49:22 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char *argv[])
 			send_error("Error\nFailed to open file.");
 		map = get_map(fd, (char *)argv[1]);
 		check_valid(&map);
-		game_main();
+		game_main(map);
 	}
 	else
 		send_error("Error\nMore than 1 argument.");

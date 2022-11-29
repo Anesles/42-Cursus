@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/28 15:48:50 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/29 14:37:46 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-MINILIBX = -I /usr/local/include -g -L /usr/local/lib -l mlx -lX11 -lXext -lGLEW -lglfw -lGL -lm
+MINILIBX =  -I mlx.h libmlx.a -g -L ./minilibx -Ilmlx -lXext -lX11
 
 LIBFTPATH = ./libft/
 
