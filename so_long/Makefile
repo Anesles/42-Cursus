@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/29 14:37:46 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/29 15:16:55 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ LIBFTNAME = libft.a
 
 SRC = main.c
 
-ERROR = error_check/check_valid.c error_check/send_error.c error_check/check_extra.c
+ERROR = error_check/check_valid.c error_check/send_error.c error_check/check_extra.c \
+		error_check/free_map.c
 
 FLOOD = flood/flood_fill.c
 

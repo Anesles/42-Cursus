@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:42:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 14:49:22 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:36:19 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static t_map	get_map(int fd, char *file)
 		map.map[i] = ft_strtrim(get_next_line(fd), "\n\r\t\v\f");
 		if (!map.map[i])
 		{
-			free(map.map);
+			free_map(&map.map, map.n_lines);
 			send_error("Error\nFailed map[] alloc.");
 		}
 		i++;
@@ -69,6 +69,7 @@ int	main(int argc, char *argv[])
 		map = get_map(fd, (char *)argv[1]);
 		check_valid(&map);
 		game_main(map);
+		free_map(&map.map, map.n_lines);
 	}
 	else
 		send_error("Error\nMore than 1 argument.");
