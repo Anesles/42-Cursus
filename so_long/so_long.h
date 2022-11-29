@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:22:42 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 18:12:07 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:42:29 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,18 @@ typedef struct s_mlx
 typedef struct s_imgs
 {
 	t_img	p;
+	t_img	b;
 	t_img	w;
 	t_img	c;
 	t_img	e;
 }	t_imgs;
+
+typedef struct s_vars
+{
+	t_imgs	imgs;
+	t_mlx	mlx;
+	t_map	map;
+}	t_vars;
 
 
 int		main(int argc, char *argv[]);
@@ -53,6 +61,7 @@ void	check_valid(t_map *map);
 void	check_extra(t_map map);
 void	flood_fill(t_map map);
 void	free_map(t_map map);
+void	graphics_main(t_vars *vars);
 
 void	game_main(t_map map);
 
