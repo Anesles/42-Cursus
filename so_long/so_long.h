@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:22:42 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/30 16:32:15 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:52:56 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ typedef struct s_mlx
 	void	*ptr;
 	void	*win;
 	int		moves;
+	int		endgame;
 }	t_mlx;
 
 typedef struct s_imgs
 {
 	t_img	p;
+	t_img	p2;
 	t_img	b;
 	t_img	w;
 	t_img	c;
@@ -56,6 +58,7 @@ typedef struct s_vars
 
 
 int		main(int argc, char *argv[]);
+int		animations(t_vars *vars);
 
 void	send_error(char	*message);
 void	check_valid(t_map *map);
@@ -64,7 +67,6 @@ void	flood_fill(t_map *map);
 void	free_map(t_map map);
 void	graphics_main(t_vars *vars);
 void	update_player(t_vars *vars, int x, int y);
-
 void	game_main(t_vars vars);
 
 #endif

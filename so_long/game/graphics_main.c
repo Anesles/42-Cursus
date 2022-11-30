@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:18:14 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/30 16:32:23 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:49:20 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ static void	make_map(t_vars vars)
 	}
 }
 
+static void end_game(t_vars *vars)
+{
+	ft_printf("Game ended!");
+	vars->mlx.endgame = 1;
+}
+
 void	update_player(t_vars *vars, int x, int y)
 {
 	if (vars->map.map[x][y] != '1')
@@ -66,11 +72,11 @@ void	update_player(t_vars *vars, int x, int y)
 				vars->imgs.p.ptr, y * 50, x * 50);
 		vars->map.p_pos[0] = x;
 		vars->map.p_pos[1] = y;
+		ft_printf("Moves: %d\n", ++vars->mlx.moves);
 		if (vars->map.p_pos[0] == vars->map.e_pos[0]
 			&& vars->map.p_pos[1] == vars->map.e_pos[1]
 			&& vars->map.n_collec <= 0)
-			send_error("Game ended!");
-		ft_printf("Moves: %d\n", ++vars->mlx.moves);
+			end_game(vars);
 	}
 }
 
@@ -86,5 +92,7 @@ void	graphics_main(t_vars *vars)
 			"textures/B.xpm", &(*vars).imgs.b.w, &(*vars).imgs.b.h);
 	(*vars).imgs.e.ptr = mlx_xpm_file_to_image((*vars).mlx.ptr, \
 			"textures/E.xpm", &(*vars).imgs.e.w, &(*vars).imgs.e.h);
+	(*vars).imgs.p2.ptr = mlx_xpm_file_to_image((*vars).mlx.ptr, \
+			"textures/P2.xpm", &(*vars).imgs.p2.w, &(*vars).imgs.p2.h);
 	make_map((*vars));
 }

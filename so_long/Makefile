@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:39:32 by brumarti          #+#    #+#              #
-#    Updated: 2022/11/29 21:34:43 by brumarti         ###   ########.fr        #
+#    Updated: 2022/11/30 17:52:13 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ LIBFTNAME = libft.a
 
 SRC = main.c
 
+ANIMATIONS = animations/animations.c
+
 ERROR = error_check/check_valid.c error_check/send_error.c error_check/check_extra.c \
 		error_check/free_map.c
 
@@ -31,7 +33,7 @@ FLOOD = flood/flood_fill.c
 
 GAME = game/game_main.c game/graphics_main.c
 
-OBJ = $(SRC:.c=.o) $(ERROR:.c=.o) $(FLOOD:.c=.o) $(GAME:.c=.o)
+OBJ = $(SRC:.c=.o) $(ERROR:.c=.o) $(FLOOD:.c=.o) $(GAME:.c=.o) $(ANIMATIONS:.c=.o)
 
 all: $(NAME)
 

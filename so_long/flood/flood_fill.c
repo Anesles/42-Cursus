@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 21:44:57 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/30 16:05:34 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:33:02 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	print_map(char **map, int max_l, int x, int y)
 	ft_printf("x:%d  y:%d\n", x, y);
 }
 */
-
 static void	fill(char	***new_map, int x, int y, t_map map)
 {
 	if (x < 0 || x >= map.n_lines || y < 0 || y >= map.n_cols
@@ -32,9 +31,6 @@ static void	fill(char	***new_map, int x, int y, t_map map)
 	else
 	{
 		(*new_map)[x][y] = ' ';
-		//system("clear");
-		//print_map(*new_map, map.n_lines, x, y);
-		//usleep(200000);
 		fill(new_map, x - 1, y, map);
 		fill(new_map, x + 1, y, map);
 		fill(new_map, x, y - 1, map);
