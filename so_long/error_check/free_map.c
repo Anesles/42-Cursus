@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:14:58 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 16:44:10 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:13:59 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_map(t_map map)
 	int	i;
 
 	i = 0;
-	while(i < map.n_lines)
+	while (i < map.n_lines)
 	{
 		free(map.map[i]);
 		i++;

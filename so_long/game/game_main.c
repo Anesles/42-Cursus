@@ -6,17 +6,27 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:55:49 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 21:38:24 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:02:30 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
-static int	key_hook(int keycode, t_mlx *mlx)
+static int	key_hook(int keycode, t_vars *vars)
 {
-	ft_printf("Keycode: %d\n", keycode);
 	if (keycode == 65307)
-		mlx_loop_end(mlx->ptr);
+	{
+		mlx_loop_end(vars->mlx.ptr);
+		return (0);
+	}
+	else if (keycode == 119)
+		update_player(vars, vars->map.p_pos[0] - 1, vars->map.p_pos[1]);
+	else if (keycode == 115)
+		update_player(vars, vars->map.p_pos[0] + 1, vars->map.p_pos[1]);
+	else if (keycode == 100)
+		update_player(vars, vars->map.p_pos[0], vars->map.p_pos[1] + 1);
+	else if (keycode == 97)
+		update_player(vars, vars->map.p_pos[0], vars->map.p_pos[1] - 1);
 	return (0);
 }
 
@@ -26,16 +36,15 @@ static int	ft_close(t_mlx *mlx)
 	return (0);
 }
 
-void	game_main(t_map map)
+void	game_main(t_vars vars)
 {
-	t_vars	vars;
-
-	vars.map = map;
+	vars.mlx.moves = 0;
 	vars.mlx.ptr = mlx_init();
-	vars.mlx.win = mlx_new_window(vars.mlx.ptr, map.n_cols * 50, \
-			map.n_lines * 50, "Teste");
+	vars.mlx.win = mlx_new_window(vars.mlx.ptr, vars.map.n_cols * 50, \
+			vars.map.n_lines * 50, "So_Long");
 	graphics_main(&vars);
-	mlx_hook(vars.mlx.win, 2, 1L << 0, key_hook, &vars.mlx);
+	ft_printf("Moves: %d\n", vars.mlx.moves);
+	mlx_hook(vars.mlx.win, 2, 1L << 0, key_hook, &vars);
 	mlx_hook(vars.mlx.win, 17, 1L << 0, ft_close, &vars.mlx);
 	mlx_loop(vars.mlx.ptr);
 	mlx_destroy_image(vars.mlx.ptr, vars.imgs.p.ptr);

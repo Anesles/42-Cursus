@@ -56,10 +56,10 @@ static void	get_map(int fd, char *file, t_map *map)
 
 int	main(int argc, char *argv[])
 {
-	t_map	map;
+	t_vars	vars;
 	int		fd;
 
-	map.map = 0;
+	vars.map.map = 0;
 	if (argc == 2)
 	{
 		if (!ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])))
@@ -67,10 +67,10 @@ int	main(int argc, char *argv[])
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
 			send_error("Error\nFailed to open file.");
-		get_map(fd, (char *)argv[1], &map);
-		check_valid(&map);
-		game_main(map);
-		free_map(map);
+		get_map(fd, (char *)argv[1], &vars.map);
+		check_valid(&vars.map);
+		game_main(vars);
+		free_map(vars.map);
 		close(fd);
 	}
 	else

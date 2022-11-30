@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 21:44:57 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/29 20:05:34 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:05:34 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,33 @@ static void	fill(char	***new_map, int x, int y, t_map map)
 	}
 }
 
-static void	check_path(char **fill_map, t_map map)
+static	int	check_collect(char c)
+{
+	if (c != ' ')
+		send_error("Error\nInvalid path(Collectible unreachable).");
+	return (1);
+}
+
+static void	check_path(char **fill_map, t_map *map)
 {
 	int		i;
 	int		j;
 	int		valid;
 
-	if (fill_map[map.e_pos[0]][map.e_pos[1]] != ' ')
+	map->n_collec = 0;
+	if (fill_map[map->e_pos[0]][map->e_pos[1]] != ' ')
 		send_error("Error\nInvalid path (Exit not reachable).");
 	i = 1;
 	valid = 0;
-	while (i < map.n_lines)
+	while (i < map->n_lines)
 	{
 		j = 1;
-		while (j < map.n_cols)
+		while (j < map->n_cols)
 		{
-			if (map.map[i][j] == 'C')
+			if (map->map[i][j] == 'C')
 			{
-				valid = 1;
-				if (fill_map[i][j] != ' ')
-					send_error("Error\nInvalid path(Collectible unreachable).");
+				map->n_collec += 1;
+				valid = check_collect(fill_map[i][j]);
 			}
 			j++;
 		}
@@ -71,22 +78,22 @@ static void	check_path(char **fill_map, t_map map)
 		send_error("Error\nNo collectibles.");
 }
 
-void	flood_fill(t_map map)
+void	flood_fill(t_map *map)
 {
 	char	**new_map;
 	int		i;
 
 	i = 0;
-	new_map = (char **) malloc(map.n_lines * sizeof(char *));
-	while (i < map.n_lines)
+	new_map = (char **) malloc(map->n_lines * sizeof(char *));
+	while (i < map->n_lines)
 	{
-		new_map[i] = ft_strdup(map.map[i]);
+		new_map[i] = ft_strdup(map->map[i]);
 		i++;
 	}
-	fill(&new_map, map.p_pos[0], map.p_pos[1], map);
+	fill(&new_map, map->p_pos[0], map->p_pos[1], *map);
 	check_path(new_map, map);
 	i = 0;
-	while (i < map.n_lines)
+	while (i < map->n_lines)
 		free(new_map[i++]);
 	free(new_map);
 }

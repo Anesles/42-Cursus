@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:29:32 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/26 02:17:08 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:50:24 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,5 @@ void	check_valid(t_map *map)
 	check_closed(*map);
 	check_elements(map);
 	check_extra(*map);
-	flood_fill(*map);
+	flood_fill(map);
 }
