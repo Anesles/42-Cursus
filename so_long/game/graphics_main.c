@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:18:14 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/30 16:07:31 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:32:23 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ void	update_player(t_vars *vars, int x, int y)
 		vars->map.p_pos[0] = x;
 		vars->map.p_pos[1] = y;
 		if (vars->map.p_pos[0] == vars->map.e_pos[0]
-			&& vars->map.p_pos[1] == vars->map.e_pos[1] && vars->map.n_collec <= 0)
-			send_error("Game ended!\n");
+			&& vars->map.p_pos[1] == vars->map.e_pos[1]
+			&& vars->map.n_collec <= 0)
+			send_error("Game ended!");
 		ft_printf("Moves: %d\n", ++vars->mlx.moves);
 	}
 }

@@ -6,13 +6,12 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:22:42 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/30 15:32:33 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:32:15 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
 # include "mlx.h"
 
 typedef struct s_map
