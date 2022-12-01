@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:55:49 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/30 17:46:22 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/11/30 21:26:13 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	game_main(t_vars vars)
 	mlx_destroy_image(vars.mlx.ptr, vars.imgs.e.ptr);
 	mlx_destroy_image(vars.mlx.ptr, vars.imgs.b.ptr);
 	mlx_destroy_image(vars.mlx.ptr, vars.imgs.c.ptr);
+	mlx_destroy_image(vars.mlx.ptr, vars.imgs.p2.ptr);
 	mlx_destroy_window(vars.mlx.ptr, vars.mlx.win);
 	mlx_destroy_display(vars.mlx.ptr);
 	free(vars.mlx.ptr);
