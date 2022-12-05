@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 16:22:42 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/02 01:03:45 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:24:48 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ typedef struct s_vars
 	t_imgs	imgs;
 	t_mlx	mlx;
 	t_map	map;
+	int		fps;
+	int		state;
 }	t_vars;
 
 int		main(int argc, char *argv[]);
 int		animations(t_vars *vars);
 
+void	update_moves(t_vars *vars);
 void	send_error(char	*message);
 void	check_valid(t_map *map);
 void	check_extra(t_map map);

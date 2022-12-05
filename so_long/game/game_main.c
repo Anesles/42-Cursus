@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 14:55:49 by brumarti          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/12/05 14:25:58 by brumarti         ###   ########.fr       */
-=======
-/*   Updated: 2022/11/30 21:26:13 by brumarti         ###   ########.fr       */
->>>>>>> 7127c695e45a9ceddfa68261d2b6369b25cafce9
+/*   Created: 2022/12/05 14:28:32 by brumarti          #+#    #+#             */
+/*   Updated: 2022/12/05 15:25:05 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +40,16 @@ static int	ft_close(t_mlx *mlx)
 
 void	game_main(t_vars vars)
 {
+	vars.state = 0;
+	vars.fps = 0;
 	vars.mlx.moves = 0;
 	vars.mlx.endgame = 0;
 	vars.mlx.ptr = mlx_init();
 	vars.mlx.win = mlx_new_window(vars.mlx.ptr, vars.map.n_cols * 50, \
-			vars.map.n_lines * 50, "So_long");
+			vars.map.n_lines * 50 + 50, "So_long");
 	graphics_main(&vars);
-	ft_printf("Moves: %d\n", vars.mlx.moves);
+	mlx_string_put(vars.mlx.ptr, vars.mlx.win, (vars.map.n_cols * 50) / 2 - 25, \
+		vars.map.n_lines * 50 + 25, 0xFFFFFF, "Moves: 0");
 	mlx_hook(vars.mlx.win, 2, 1L << 0, key_hook, &vars);
 	mlx_hook(vars.mlx.win, 17, 1L << 0, ft_close, &vars.mlx);
 	mlx_loop_hook(vars.mlx.ptr, animations, &vars);

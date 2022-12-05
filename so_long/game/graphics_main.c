@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 21:18:14 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/01 23:16:59 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:20:03 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	update_player(t_vars *vars, int x, int y)
 				vars->imgs.p.ptr, y * 50, x * 50);
 		vars->map.p_pos[0] = x;
 		vars->map.p_pos[1] = y;
-		ft_printf("Moves: %d\n", ++vars->mlx.moves);
+		update_moves(vars);
 		if (vars->map.p_pos[0] == vars->map.e_pos[0]
 			&& vars->map.p_pos[1] == vars->map.e_pos[1]
 			&& vars->map.n_collec <= 0)
