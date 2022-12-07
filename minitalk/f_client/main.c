@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:50:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/07 18:11:18 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:31:36 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,17 @@ static void	encoder(int pid, const char *str)
 		j = 7;
 		while (j >= 0)
 		{
-			if (str[i] & (1 << j))
-				kill(pid, SIGUSR1);
+			if (str[i] & (1 << j--))
+			{
+				if (kill(pid, SIGUSR1) == -1)
+					send_error("Unable to send SIGUSR1.");
+			}
 			else
-				kill(pid, SIGUSR2);
+			{
+				if (kill(pid, SIGUSR2) == -1)
+					send_error("Unable to send SIGUSR2.");
+			}
 			usleep(50);
-			j--;
 		}
 		i++;
 	}
@@ -37,11 +42,15 @@ static void	encoder(int pid, const char *str)
 int	main(int argc, char const *argv[])
 {
 	pid_t	pid;
+	int		i;
 
 	if (argc != 3)
+		send_error("Invalid amount of arguments");
+	i = 0;
+	while (argv[1][i])
 	{
-		ft_printf("Error\nBad number of arguments");
-		exit(EXIT_FAILURE);
+		if (!ft_isdigit(argv[1][i++]))
+			send_error("Invalid PID");
 	}
 	pid = ft_atoi(argv[1]);
 	encoder(pid, argv[2]);

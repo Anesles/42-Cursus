@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:50:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/07 18:14:47 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:25:24 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static void	config_signals(void)
 	sa_newsig.sa_sigaction = &handler;
 	sa_newsig.sa_flags = SA_SIGINFO;
 	if (sigaction(SIGUSR1, &sa_newsig, NULL) == -1)
-		exit(EXIT_FAILURE);
+		send_error("Couldn't change SIGUSR1's state.");
 	if (sigaction(SIGUSR2, &sa_newsig, NULL) == -1)
-		exit(EXIT_FAILURE);
+		send_error("Couldn't change SIGUSR2's state.");
 }
 
 int	main(void)
@@ -69,7 +69,7 @@ int	main(void)
 	pid_t	pid;
 
 	pid = getpid();
-	ft_printf("PID: %d\n", pid);
+	ft_printf("Server PID: %d\n", pid);
 	while (1)
 		config_signals();
 }
