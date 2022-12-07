@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:50:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/07 15:28:55 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:11:18 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	encoder(int pid, const char *str)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(5);
+			usleep(50);
 			j--;
 		}
 		i++;
@@ -36,7 +36,7 @@ static void	encoder(int pid, const char *str)
 
 int	main(int argc, char const *argv[])
 {
-	int		pid;
+	pid_t	pid;
 
 	if (argc != 3)
 	{
@@ -45,7 +45,5 @@ int	main(int argc, char const *argv[])
 	}
 	pid = ft_atoi(argv[1]);
 	encoder(pid, argv[2]);
-	while(1)
-		pause();
 	return (EXIT_SUCCESS);
 }
