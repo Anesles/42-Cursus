@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:15:28 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/24 18:16:25 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/07 18:22:22 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include "get_next_line/get_next_line.h"
 # include "ft_printf/ft_printf.h"
+# include "../minitalk.h"
 # include <stdio.h>
 # include <stdarg.h>
 # include <fcntl.h>
@@ -74,6 +75,7 @@ void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
+void		send_error(char *msg);
 
 t_list		*ft_lstnew(void *content);
 t_list		*ft_lstlast(t_list *lst);
