@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:50:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/07 00:13:58 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:44:06 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ static int	decoder(char *str)
 	return (result);
 }
 
-static void	handler(int signal)
+static void	handler(int signal, siginfo_t *info, void *content)
 {
 	static int	i;
 	static char	*c;
 
+	(void)content;
 	if (!c)
 		c = (char *)malloc(sizeof(char) * 8);
 	if (!i)
@@ -45,17 +46,33 @@ static void	handler(int signal)
 	if (++i == 8)
 	{
 		ft_printf("%c", decoder(c));
-		i = 0;
 		c = 0;
+		if (kill(info->si_pid, SIGUSR2) == -1);
+			exit(EXIT_FAILURE);
+		i = 0;
 	}
+}
+
+static void	config_signals()
+{
+	struct sigaction	sa_newsig;
+
+	sa_newsig.sa_sigaction = &handler;
+	sa_newsig.sa_flags = SA_SIGINFO;
+	if(sigaction(SIGUSR1, &sa_newsig, NULL) == -1)
+		exit(EXIT_FAILURE);
+	if(sigaction(SIGUSR2, &sa_newsig, NULL) == -1)
+		exit(EXIT_FAILURE);
 }
 
 int	main(void)
 {
-	ft_printf("PID: %d\n", getpid());
+	pid_t	pid;
+	
+	pid = getpid();
+	ft_printf("PID: %d\n", pid);
 	while (1)
 	{
-		signal(SIGUSR1, handler);
-		signal(SIGUSR2, handler);
+		config_signals();
 	}
 }
