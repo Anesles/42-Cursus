@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 15:50:11 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/07 18:31:36 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:30:54 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int	main(int argc, char const *argv[])
 	}
 	pid = ft_atoi(argv[1]);
 	encoder(pid, argv[2]);
+	encoder(pid, "\n");
 	return (EXIT_SUCCESS);
 }
