@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:38:57 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/14 16:33:34 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:42:50 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,17 @@ int main(int argc, char const *argv[])
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*temp;
-	int		*x;
 
-	x =	malloc(sizeof(int));
-	i = -1;
 	if (argc > 1)
 	{
-		while (++i < (argc - 1))
+		stack_a = ft_lstnew((char *)argv[1]);
+		stack_b = ft_lstnew(NULL);
+		i = 1;
+		while (i < argc - 1)
 		{
-			*x = ft_atoi(argv[i + 1]);
-			temp = ft_lstnew(x);
-			ft_lstadd_back(&stack_a, temp);
-			temp = ft_lstnew(NULL);
-			ft_lstadd_back(&stack_b, temp);
+			ft_lstadd_back(&stack_a, ft_lstnew((char *)argv[i + 1]));
+			ft_lstadd_back(&stack_b, ft_lstnew(NULL));
+			i++;
 		}
 	}
 	return 0;
