@@ -14,7 +14,6 @@
 # define LIBFT_H
 # include "get_next_line/get_next_line.h"
 # include "ft_printf/ft_printf.h"
-# include "../minitalk.h"
 # include <stdio.h>
 # include <stdarg.h>
 # include <fcntl.h>
