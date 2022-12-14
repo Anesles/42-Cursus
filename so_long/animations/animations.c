@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:27:55 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/05 15:24:59 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:12:02 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ int	animations(t_vars *vars)
 					vars->map.p_pos[0] * 50);
 			vars->state = 0;
 		}
-	}
-	else if (vars->fps > 100000)
 		vars->fps = 0;
+	}
 	return (0);
 }
 
