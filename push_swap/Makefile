@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 15:49:17 by brumarti          #+#    #+#              #
-#    Updated: 2022/12/14 15:50:15 by brumarti         ###   ########.fr        #
+#    Updated: 2022/12/15 15:08:41 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBFTPATH = ./libft/
 
 LIBFTNAME = libft.a
 
-SRC = main.c
+SRC = main.c init.c oper.c
 
 OBJ = $(SRC:.c=.o)
 

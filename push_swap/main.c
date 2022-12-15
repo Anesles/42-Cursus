@@ -6,30 +6,30 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:38:57 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/14 17:42:50 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/15 16:55:11 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
-	int		i;
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*temp;
+	t_stack	a;
+	t_stack	b;
 
 	if (argc > 1)
 	{
-		stack_a = ft_lstnew((char *)argv[1]);
-		stack_b = ft_lstnew(NULL);
-		i = 1;
-		while (i < argc - 1)
-		{
-			ft_lstadd_back(&stack_a, ft_lstnew((char *)argv[i + 1]));
-			ft_lstadd_back(&stack_b, ft_lstnew(NULL));
-			i++;
-		}
+		init(argc, argv, &a, &b);
+		print_stacks(a, b);
+		sa(a.list);
+		print_stacks(a, b);
+		pb(&a, &b);
+		print_stacks(a, b);
+		pb(&a, &b);
+		print_stacks(a, b);
+		pa(&a, &b);
+		print_stacks(a, b);
 	}
+	
 	return 0;
 }
