@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 15:38:57 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/16 17:12:29 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:25:10 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,17 @@ int	main(int argc, char *argv[])
 			return (0);
 		if (a.stack_size == 3)
 			short_stack(&a);
+		else if (a.stack_size == 4 || a.stack_size == 5)
+		{
+			if (a.stack_size == 5)
+				pb(&a, &b);
+			pb(&a, &b);
+			if (!check_sorted(&a))
+				short_stack(&a);
+			find_and_set(&a, &b);
+		}
 		print_stacks(a, b);
+		ft_printf("\n");
 		if (check_sorted(&a))
 			return (0);
 	}

@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 15:49:17 by brumarti          #+#    #+#              #
-#    Updated: 2022/12/16 16:56:27 by brumarti         ###   ########.fr        #
+#    Updated: 2022/12/16 18:01:40 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.c init.c
 
 OPER = oper/oper.c oper/oper2.c oper/oper3.c
 
-ALGO = short_stack/short_stack.c
+ALGO = sort/short_stack.c sort/find_and_set.c
 
 OBJ = $(SRC:.c=.o) $(OPER:.c=.o) $(ALGO:.c=.o)
 
