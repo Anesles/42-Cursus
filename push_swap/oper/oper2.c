@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 17:05:16 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/16 15:40:15 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:10:51 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	ra(t_stack *a)
 		temp = a->list[i];
 		a->list[i] = a->list[i + 1];
 		a->list[i + 1] = temp;
-		i++; 
+		i++;
 	}
+	ft_printf("ra\n");
 }
 
 void	rb(t_stack *b)
@@ -40,8 +41,9 @@ void	rb(t_stack *b)
 		temp = b->list[i];
 		b->list[i] = b->list[i + 1];
 		b->list[i + 1] = temp;
-		i++; 
+		i++;
 	}
+	ft_printf("rb\n");
 }
 
 void	rr(t_stack *a, t_stack *b)
@@ -62,9 +64,11 @@ void	rra(t_stack *a)
 		temp = a->list[i];
 		a->list[i] = a->list[i - 1];
 		a->list[i - 1] = temp;
-		i--; 
+		i--;
 	}
+	ft_printf("rra\n");
 }
+
 void	rrb(t_stack *b)
 {
 	int	i;
@@ -77,6 +81,7 @@ void	rrb(t_stack *b)
 		temp = b->list[i];
 		b->list[i] = b->list[i - 1];
 		b->list[i - 1] = temp;
-		i--; 
+		i--;
 	}
+	ft_printf("rrb\n");
 }

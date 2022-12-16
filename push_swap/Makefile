@@ -6,7 +6,7 @@
 #    By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/14 15:49:17 by brumarti          #+#    #+#              #
-#    Updated: 2022/12/16 15:41:39 by brumarti         ###   ########.fr        #
+#    Updated: 2022/12/16 16:56:27 by brumarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRC = main.c init.c
 
 OPER = oper/oper.c oper/oper2.c oper/oper3.c
 
-OBJ = $(SRC:.c=.o) $(OPER:.c=.o)
+ALGO = short_stack/short_stack.c
+
+OBJ = $(SRC:.c=.o) $(OPER:.c=.o) $(ALGO:.c=.o)
 
 all: $(NAME)
 

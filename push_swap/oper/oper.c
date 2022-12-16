@@ -6,37 +6,39 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 15:05:39 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/16 15:40:10 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:12:00 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	sa(int *a)
+void	sa(t_stack *a)
 {
 	int	temp;
-	
-	if(a[0] && a[1])
+
+	if (a->list[0] && a->list[1])
 	{
-		temp = a[0];
-		a[0] = a[1];
-		a[1] = temp;
+		temp = a->list[0];
+		a->list[0] = a->list[1];
+		a->list[1] = temp;
 	}
+	ft_printf("sa\n");
 }
 
-void	sb(int *b)
+void	sb(t_stack *b)
 {
 	int	temp;
-	
-	if(b[0] && b[1])
+
+	if (b->list[0] && b->list[1])
 	{
-		temp = b[0];
-		b[0] = b[1];
-		b[1] = temp;
+		temp = b->list[0];
+		b->list[0] = b->list[1];
+		b->list[1] = temp;
 	}
+	ft_printf("sb\n");
 }
 
-void	ss(int *a, int *b)
+void	ss(t_stack *a, t_stack *b)
 {
 	sa(a);
 	sb(b);
@@ -44,11 +46,11 @@ void	ss(int *a, int *b)
 
 void	pa(t_stack *a, t_stack *b)
 {
-	int temp;
+	int	temp;
 	int	i;
 
 	if (b->stack_size == 0)
-		return;
+		return ;
 	temp = b->list[0];
 	i = -1;
 	while (++i < b->stack_size - 1)
@@ -60,6 +62,7 @@ void	pa(t_stack *a, t_stack *b)
 		a->list[i] = a->list[i - 1];
 	a->list[0] = temp;
 	a->stack_size++;
+	ft_printf("pa\n");
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -68,7 +71,7 @@ void	pb(t_stack *a, t_stack *b)
 	int	i;
 
 	if (a->stack_size == 0)
-		return;
+		return ;
 	temp = a->list[0];
 	i = -1;
 	while (++i < a->stack_size - 1)
@@ -80,4 +83,5 @@ void	pb(t_stack *a, t_stack *b)
 		b->list[i] = b->list[i - 1];
 	b->list[0] = temp;
 	b->stack_size++;
+	ft_printf("pb\n");
 }

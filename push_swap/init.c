@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 14:52:45 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/15 16:52:25 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:13:50 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init(int argc, char **argv, t_stack	*a, t_stack	*b)
 	b->list = malloc(sizeof(char *) * argc - 1);
 	a->stack_size = argc - 1;
 	b->stack_size = 0;
-	while(i < argc - 1)
+	while (i < argc - 1)
 	{
 		if (ft_isdigit(argv[i + 1][0]))
 			a->list[i] = ft_atoi(argv[i + 1]);
@@ -38,7 +38,7 @@ void	init(int argc, char **argv, t_stack	*a, t_stack	*b)
 void	print_stacks(t_stack a, t_stack b)
 {
 	int	i;
-	
+
 	i = 0;
 	while (a.list[i] || b.list[i])
 	{

@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlenn.c                                       :+:      :+:    :+:   */
+/*   short_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 15:58:17 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/16 17:09:40 by brumarti         ###   ########.fr       */
+/*   Created: 2022/12/16 16:46:46 by brumarti          #+#    #+#             */
+/*   Updated: 2022/12/16 17:14:02 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../push_swap.h"
 
-size_t	ft_strlenn(const char *s)
+void	short_stack(t_stack *a)
 {
-	size_t	length;
-
-	length = 0;
-	if (!s)
-		return (length);
-	while (s[length])
-		length++;
-	return (length);
+	if (a->list[0] > a->list[1])
+	{
+		if (a->list[1] < a->list[2] && a->list[2] > a->list[0])
+			sa(a);
+		else if (a->list[0] > a->list[2] && a->list[1] < a->list[2])
+			ra(a);
+		else if (a->list[1] > a->list[2])
+		{
+			sa(a);
+			rra(a);
+		}
+	}
+	else
+	{
+		if (a->list[0] < a->list[2])
+		{
+			sa(a);
+			ra(a);
+		}
+		else
+			rra(a);
+	}
 }
