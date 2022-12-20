@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 16:41:10 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:47:01 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*read_buffer(int fd)
 	char	*aux;
 	int		bytes;
 
-	aux = malloc(BUFFER_SIZE * sizeof(char));
+	aux = malloc(BUFFER_SIZE * sizeof(char) + 1);
 	if (!aux)
 		return (NULL);
 	bytes = read(fd, aux, BUFFER_SIZE);
@@ -115,7 +115,7 @@ int	main()
 	int fd;
 	char	*line;
 
-	fd = open("gnlTester/files/big_line_no_nl", O_RDWR);
+	fd = open("gnlTester/files/multiple_line_with_nl", O_RDWR);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -126,4 +126,5 @@ int	main()
 		if (!line)
 			return (0);
 	}
+	close(fd);
 }
