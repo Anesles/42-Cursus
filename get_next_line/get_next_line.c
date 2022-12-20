@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/12/20 16:47:01 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:26:48 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ char	*get_next_line(int fd)
 	return (get_next_line(fd));
 }
 
-int	main()
+int	main(void)
 {
-	int fd;
+	int		fd;
 	char	*line;
 
 	fd = open("gnlTester/files/multiple_line_with_nl", O_RDWR);

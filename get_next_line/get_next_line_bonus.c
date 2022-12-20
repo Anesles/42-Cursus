@@ -6,7 +6,7 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/15 16:33:59 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/20 17:29:05 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*read_buffer(int fd)
 	char	*aux;
 	int		bytes;
 
-	aux = malloc(BUFFER_SIZE * sizeof(char));
+	aux = malloc(BUFFER_SIZE * sizeof(char) + 1);
 	if (!aux)
 		return (NULL);
 	bytes = read(fd, aux, BUFFER_SIZE);
