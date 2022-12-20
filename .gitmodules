@@ -7,3 +7,6 @@
 [submodule "so_long/libft"]
 	path = so_long/libft
 	url = git@github.com:Anesles/42-libft.git
+[submodule "push_swap/libft"]
+	path = push_swap/libft
+	url = git@github.com:Anesles/42-libft.git
