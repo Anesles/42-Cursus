@@ -6,18 +6,20 @@
 /*   By: brumarti <brumarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:54:26 by brumarti          #+#    #+#             */
-/*   Updated: 2022/11/25 15:59:13 by brumarti         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:47:01 by brumarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
-static char	*read_buffer(int fd)
+char	*read_buffer(int fd)
 {
 	char	*aux;
 	int		bytes;
 
-	aux = malloc(BUFFER_SIZE * sizeof(char));
+	aux = malloc(BUFFER_SIZE * sizeof(char) + 1);
 	if (!aux)
 		return (NULL);
 	bytes = read(fd, aux, BUFFER_SIZE);
@@ -30,7 +32,7 @@ static char	*read_buffer(int fd)
 	return (aux);
 }
 
-static char	*expand_buf(char *buf, int fd)
+char	*expand_buf(char *buf, int fd)
 {	
 	size_t	new_len;
 	char	*new_buf;
@@ -46,7 +48,7 @@ static char	*expand_buf(char *buf, int fd)
 	}
 	if (!buf)
 		return (aux);
-	new_len = ft_strlenn(aux) + ft_strlenn(buf);
+	new_len = ft_strlen(aux) + ft_strlen(buf);
 	new_buf = malloc(new_len + 1);
 	if (!new_buf)
 		return (NULL);
@@ -57,7 +59,7 @@ static char	*expand_buf(char *buf, int fd)
 	return (new_buf);
 }
 
-static char	*new_line(char *buf, char *line)
+char	*new_line(char *buf, char *line)
 {
 	char	*new_buf;
 	int		index;
@@ -65,14 +67,14 @@ static char	*new_line(char *buf, char *line)
 
 	if (!buf || !line)
 		return (buf);
-	if (ft_strlenn(buf) == ft_strlenn(line))
+	if (ft_strlen(buf) == ft_strlen(line))
 	{
 		free(buf);
 		return (NULL);
 	}
 	index = 0;
-	index += ft_strlenn(line);
-	new_len = ft_strlenn(buf) - ft_strlenn(line);
+	index += ft_strlen(line);
+	new_len = ft_strlen(buf) - ft_strlen(line);
 	new_buf = ft_substr(buf, index, new_len + 1);
 	if (!new_buf)
 		return (NULL);
@@ -89,21 +91,40 @@ char	*get_next_line(int fd)
 	if (fd < 0 || fd > 4095 || BUFFER_SIZE < 0)
 		return (NULL);
 	line = NULL;
-	if ((int)ft_strchrr(buf[fd], '\n') == -1)
+	if ((int)ft_strchr(buf[fd], '\n') == -1)
 	{
-		old_len = ft_strlenn(buf[fd]);
+		old_len = ft_strlen(buf[fd]);
 		buf[fd] = expand_buf(buf[fd], fd);
-		if (old_len == ft_strlenn(buf[fd]))
-			line = ft_substr(buf[fd], 0, ft_strlenn(buf[fd]));
+		if (old_len == ft_strlen(buf[fd]))
+			line = ft_substr(buf[fd], 0, ft_strlen(buf[fd]));
 	}
 	if (!buf[fd])
 		return (NULL);
-	if (!line && (int)ft_strchrr(buf[fd], '\n') != -1)
-		line = ft_substr(buf[fd], 0, ft_strchrr(buf[fd], '\n') + 1);
+	if (!line && (int)ft_strchr(buf[fd], '\n') != -1)
+		line = ft_substr(buf[fd], 0, ft_strchr(buf[fd], '\n') + 1);
 	if (line)
 	{
 		buf[fd] = new_line(buf[fd], line);
 		return (line);
 	}
 	return (get_next_line(fd));
+}
+
+int	main()
+{
+	int fd;
+	char	*line;
+
+	fd = open("gnlTester/files/multiple_line_with_nl", O_RDWR);
+	while (1)
+	{
+		line = get_next_line(fd);
+		printf("%s", line);
+		if (ft_strchr(line, '\n'))
+			printf("\n");
+		free(line);
+		if (!line)
+			return (0);
+	}
+	close(fd);
 }
